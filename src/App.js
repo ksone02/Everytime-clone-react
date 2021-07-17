@@ -1,19 +1,11 @@
 import React from 'react';
 import './App.css';
-import IsLogin from './components/IsLogin';
-import NotLogin from './components/Notlogin';
-import {BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import Router from './Router';
 
 function App() {
   return (
     //jshint ignore:start
-    <div className="App">
-      <Router>
-        <Switch>
-          <IsLogin />
-        </Switch>
-      </Router>
-    </div>
+    <Router />
     //jshint ignore:end
   );
 }
