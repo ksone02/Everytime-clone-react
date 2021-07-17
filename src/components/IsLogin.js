@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from './Container';
+import Footer from './Footer';
 import Nav from './Nav';
 
 function IsLogin() {
@@ -8,6 +9,7 @@ function IsLogin() {
         <div>
             <Nav />
             <Container />
+            <Footer />
         </div>
         //jshint ignore:end
     );

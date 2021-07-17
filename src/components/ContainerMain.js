@@ -22,6 +22,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -35,6 +36,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -48,6 +50,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -61,6 +64,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -74,6 +78,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -87,6 +92,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -100,6 +106,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -113,6 +120,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -126,6 +134,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -139,6 +148,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -152,6 +162,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -165,6 +176,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -178,6 +190,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -191,6 +204,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -204,6 +218,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -217,6 +232,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -230,6 +246,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -243,6 +260,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -256,6 +274,7 @@ function ContainerMain() {
                             <li title="공감" className="vote">좋아요수</li>
                             <li title="댓글" className="comment">댓글수</li>
                         </ul>
+                        <hr />
                     </a>
                     <div class="comments"></div>
                 </article>
@@ -273,6 +292,7 @@ function ContainerMain() {
                     <a href="/377398/p/2" className="next">다음</a>
                 </div>
             </div>
+            <hr />
         </div>
     )
 }

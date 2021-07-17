@@ -1,7 +1,7 @@
 @media only screen and (min-width: 641px) {
     #container.article, #container.community {
         position: relative;
-        margin: 0 auto 25px auto;
+        margin: 0 auto 50px auto;
     }
 
     #container {
