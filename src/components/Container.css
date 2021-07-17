@@ -1,0 +1,12 @@
+@media only screen and (min-width: 641px) {
+    #container.article, #container.community {
+        position: relative;
+        margin: 0 auto 25px auto;
+    }
+
+    #container {
+        width: 1180px;
+        box-sizing: border-box;
+        margin: 80px auto 0 auto;
+    }
+}
