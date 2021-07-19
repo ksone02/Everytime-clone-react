@@ -1,16 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 
 function Login() {
+
+    const [id, setId] = useState("");
+    const [pw, setPw] = useState("");
+    const [idCheck, setIdCheck] = useState(false);
+    const [pwCheck, setPwCheck] = useState(false);
+
+    const idCheckFn = (e) => {setId(e.target.value) };
+    const pwCheckFn = (e) => {setPw(e.target.value) };
+
+    const submitId = () => {
+        const post = {
+            id: id,
+            pw: pw,
+        };
+
+
+        
+        fetch("http://localhost:3001/login", {
+            method: "post",
+            headers: {
+                "content-type" : "application/json",
+            },
+            body: JSON.stringify(post),
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            console.log("asdasdasdasd");
+            if(json === true){		// json을 받아왔는데 .tf 값이 true면 사용가능
+                alert("사용가능한 ID입니다");  //알람!
+                setIdCheck(true);
+            }
+            else{
+                alert("다른 ID를 입력해주세요");
+            }
+        });    
+    };
+
     return (
         <div className="loginDiv">
             <div id="login-container" className="login">
                 <h1 className="logo">
                     <a href="/">짭브리타임</a>
                 </h1>
-                <form action="/user/login" method="post">
-                    <p className="input"><input type="text" name="userid" maxlength="20" className="text" placeholder="아이디" /></p>
-                    <p className="input"><input type="password" name="password" maxlength="20" className="text" placeholder="비밀번호" /></p>
+                <form onSubmit={submitId}>
+                    <p className="input"><input onChange={idCheckFn}type="text" name="id" maxlength="20" className="text" placeholder="아이디" /></p>
+                    <p className="input"><input onChange={pwCheckFn} type="password" name="pw" maxlength="20" className="text" placeholder="비밀번호" /></p>
                     <p className="submit"><input type="submit" value="로그인" className="text" /></p>
                     <label className="autologin"><input type="checkbox" name="autologin" value="1" />로그인 유지</label>
                     <p className="find"><a href="/forgot">아이디/비밀번호 찾기</a></p>

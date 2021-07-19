@@ -84,3 +84,18 @@ input[type=button], input[type=email], input[type=number], input[type=password],
 #register-container strong {
     font-weight: bold;
 }
+
+#register-container .checkIcon{
+    color: green;
+    padding-left: 10px;
+}
+
+#register-container .clearIcon{
+    color: #c62917;
+    padding-left: 10px;
+}
+
+.input .inputbox {
+    display: flex;
+    align-items: center;
+}
