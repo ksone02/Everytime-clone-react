@@ -72,6 +72,20 @@ app.post("/register", (req,res)=>{
     });    
 });
 
+app.post('/checkid', (req, res) => {
+    connection.query('SELECT user_id FROM users WHERE user_id = ?', [req.body.id], function(err, row) {
+        let checkId = new Object();
+        checkId.tf = false;
+
+        if(row[0] === undefined) {
+            checkId.tf = true;
+        } else {
+            checkId.tf = false;
+        }
+        res.send(checkId);
+    });
+});
+
 app.post('/login', (req, res) => {
     var users_login = [req.body.id, req.body.pw]
     connection.query('SELECT * FROM users WHERE user_id = ?', users_login[0], (err, row) => {

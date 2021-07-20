@@ -68,7 +68,7 @@ input[type=button], input[type=email], input[type=number], input[type=password],
     letter-spacing: -0.5px;
 }
 
-#register-container input[type=submit] {
+#register-container input[type=button] {
     display: block;
     margin-top: 24px;
     width: 100%;
@@ -86,7 +86,7 @@ input[type=button], input[type=email], input[type=number], input[type=password],
 }
 
 #register-container .checkIcon{
-    color: green;
+    color: rgb(0, 128, 0);
     padding-left: 10px;
 }
 
@@ -98,4 +98,10 @@ input[type=button], input[type=email], input[type=number], input[type=password],
 .input .inputbox {
     display: flex;
     align-items: center;
+}
+
+#register-container h3 {
+    padding: 0 8px;
+    font-weight: normal;
+    font-size: 10px;
 }
