@@ -6,10 +6,20 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const mySQLStorage = require('express-mysql-session')(session);
+const axios = require('axios');
+
+var sessionStorage = new mySQLStorage({
+    host: "localhost",
+    user: "root",
+    password: "kimdongho99",
+    database: "mjclass"
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
 app.use(bodyParser.json());
+
+axios.defaults.withCredentials = true;
 
 var connection = mysql.createConnection({
     host : "localhost",
@@ -22,24 +32,13 @@ connection.connect();
 
 app.use(cors({
     origin: true,
-    credentials: true
+    credentials: true,
 }))
 
 app.use(cookieParser());
-app.use(
-    session({
-        key: "loginData",
-        secret: "testSecret",
-        resave: false,
-        saveUninitialized: false,
-        cooke: {
-            expires: 60 * 60 * 24,
-        },
-    })
-);
 
 app.get('/', (req, res) =>{
-    res.send('서버 온!')
+    res.send('서버 온!');
 });
 
 app.post("/register", (req,res)=>{
@@ -110,19 +109,23 @@ app.post('/checknickname', (req, res) => {
     });
 });
 
-app.post('/login', (req, res) => {
-    var users_login = [req.body.id, req.body.pw]
+app.post('/login', cors(), (req, res) => {
+    var users_login = [req.body.id, req.body.pw];
     connection.query('SELECT * FROM users WHERE user_id = ?', users_login[0], (err, row) => {
         let checkLogin = new Object();
         checkLogin.tf = false;
         if(err) console.log(err);
-
         if(row.length > 0) {
             console.log(users_login[0]);
             console.log(users_login[1]);
             if(users_login[1] == row[0].user_password) {
                 console.log("로그인 성공");
                 checkLogin.tf = true;
+                session.id = row[0].user_id;
+                session.nickname = row[0].user_nickname;
+                session.user_name = row[0].user_name;
+                session.logined = true;
+                console.log(session);
                 res.send(checkLogin);
             } else {
                 console.log("비밀번호가 틀립니다.");
@@ -138,10 +141,26 @@ app.post('/login', (req, res) => {
     });
 });
 
+app.post('/loginchecked', (req, res) => {
+    console.log(session.logined);
+    if(session.logined == undefined) {
+        res.send({logined: false});
+        console.log(res.json);
+    } else {
+        res.send({
+            logined: session.logined,
+            user_id: session.id,
+            user_nickname: session.nickname,
+            user_name: session.user_name
+        });
+        console.log(res.json);
+    }
+});
+
 
 app.get('/logout', (req, res) => {
     if(req.session.loginData) {
-        req.session.destroy(error => {if(error) console.log(error)});
+        session.logined = false;
         console.log("세션정보 삭제")
     } else {
         console.log("세션정보 삭제 실패")

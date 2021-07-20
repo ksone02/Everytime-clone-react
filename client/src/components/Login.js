@@ -16,9 +16,10 @@ function Login() {
     const submitId = async() => {
         try {
             const loginResponse = await axios.post('http://localhost:3001/login', { id: id, pw: pw });  
+            loginResponse.withCredentials = true;
             if(loginResponse.data.tf === true) {
                 alert("로그인성공");
-                history.push('/');
+                window.location.replace('/');
             } else if(loginResponse.data.tf === false) {
                 alert("아이디와 비밀번호를 다시 확인해주세요.");
             }

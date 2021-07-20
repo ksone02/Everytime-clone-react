@@ -1,19 +1,16 @@
 import React from 'react';
 import './LeftSide.css';
 
-function LeftSide() {
-    let nickname = "Nfla";
-    let name = "강상원";
-    let id = "eksovus";
+function LeftSide({user_id, user_name, user_nickname}) {
 
     return (
         <div className="leftside">
             <div className="card pconly">
                 <form className="logged">
                     <img src="https://cf-fpi.everytime.kr/0.png" className="picture" alt="profile"/>
-                    <p className="nickname">{nickname}</p>
-                    <p className="school">{name}</p>
-                    <p className="school">{id}</p>
+                    <p className="nickname">{user_nickname}</p>
+                    <p className="school">{user_name}</p>
+                    <p className="school">{user_id}</p>
                     <ul className="buttons">
                         <li>
                             <a href="/my">내 정보</a>

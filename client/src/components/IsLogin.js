@@ -3,12 +3,13 @@ import Container from './Container';
 import Footer from './Footer';
 import Nav from './Nav';
 
-function IsLogin() {
+function IsLogin({user_id, user_name, user_nickname}) {
     return (
         //jshint ignore:start
         <div>
             <Nav />
-            <Container />
+            <Container user_id={user_id} user_name={user_name} user_nickname={user_nickname}/>
+            <h1>{user_id}</h1>
             <Footer />
         </div>
         //jshint ignore:end
