@@ -100,7 +100,7 @@ input[type=button], input[type=email], input[type=number], input[type=password],
     align-items: center;
 }
 
-#register-container h3 {
+#register-container .available {
     padding: 0 8px;
     font-weight: normal;
     font-size: 10px;

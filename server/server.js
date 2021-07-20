@@ -85,6 +85,32 @@ app.post('/checkid', (req, res) => {
         res.send(checkId);
     });
 });
+app.post('/checkemail', (req, res) => {
+    connection.query('SELECT user_email FROM users WHERE user_email = ?', [req.body.email], function(err, row) {
+        let checkEmail = new Object();
+        checkEmail.tf = false;
+
+        if(row[0] === undefined) {
+            checkEmail.tf = true;
+        } else {
+            checkEmail.tf = false;
+        }
+        res.send(checkEmail);
+    });
+});
+app.post('/checknickname', (req, res) => {
+    connection.query('SELECT user_nickname FROM users WHERE user_nickname = ?', [req.body.nickname], function(err, row) {
+        let checkNickname = new Object();
+        checkNickname.tf = false;
+
+        if(row[0] === undefined) {
+            checkNickname.tf = true;
+        } else {
+            checkNickname.tf = false;
+        }
+        res.send(checkNickname);
+    });
+});
 
 app.post('/login', (req, res) => {
     var users_login = [req.body.id, req.body.pw]

@@ -15,10 +15,6 @@ function Register() {
     const [user_name, setName] = useState("");
     const [nickname, setNickname] = useState("");
 
-    const [overlapId, setOverlapId] = useState(false);
-    const [overlapEmail, setOverlapEmail] = useState("노멀");
-    const [overlapNickname, setOverlapNickname] = useState();
-
     const [checkIdDisplay, setCheckIdDisplay] = useState("none");
     const [clearIdDisplay, setClearIdDisplay] = useState("none");
 
@@ -40,10 +36,10 @@ function Register() {
     const idCheck = async(e) => {
         try {
             const responseCheckId = await axios.post('http://localhost:3001/checkid', { id: e.target.value });    
-            const idH3 = document.querySelector('h3');
+            const idH3 = document.querySelector('.idAvailable');
 
             if(responseCheckId.data.tf === true && e.target.value.length >= 6) {
-                setId(document.querySelector('.id_search').value);
+                setId(e.target.value);
                 setCheckIdDisplay("block");
                 setClearIdDisplay("none");
                 idH3.style.display = "block";
@@ -66,14 +62,22 @@ function Register() {
 
         }
     };
-    const pwCheck = (e) => {
-        if(e.target.value.length < 6) {
-            setClearPwDisplay("block");
-            setCheckPwDisplay("none");
-        } else {
+    const pwCheck = async(e) => {
+        const pwH3 = document.querySelector('.pwAvailable');
+
+        if(e.target.value.length >= 6) {
             setPw(e.target.value);
             setCheckPwDisplay("block");
             setClearPwDisplay("none");
+            pwH3.style.display = "block";
+            pwH3.innerHTML = "사용 가능한 비밀번호 입니다.";
+            pwH3.style.color = "green";
+        } else if(e.target.value.length < 6) {
+            setClearPwDisplay("block");
+            setCheckPwDisplay("none");
+            pwH3.style.display = "block";
+            pwH3.innerHTML = "비밀번호는 6글자 이상이여야 합니다.";
+            pwH3.style.color = "#c62917"
         }
     };
     const rePwCheck = (e) => {
@@ -85,34 +89,80 @@ function Register() {
             setClearRepwDisplay("none");
         }
     };
-    const emailCheck = (e) => {
-        if(e.target.value.length < 6) {
-            setClearEmailDisplay("block");
-            setCheckEmailDisplay("none");
-        } else {
-            setEmail(e.target.value);
-            setCheckEmailDisplay("block");
-            setClearEmailDisplay("none");
+    const emailCheck = async(e) => {
+        try {
+            const responseCheckEmail = await axios.post('http://localhost:3001/checkemail', { email: e.target.value });    
+            const emailH3 = document.querySelector('.emailAvailable');
+
+            if(responseCheckEmail.data.tf === true && e.target.value.length >= 6) {
+                setEmail(e.target.value);
+                setCheckEmailDisplay("block");
+                setClearEmailDisplay("none");
+                emailH3.style.display = "block";
+                emailH3.innerHTML = "사용 가능한 이메일 입니다.";
+                emailH3.style.color = "green";
+            } else if(responseCheckEmail.data.tf === false){
+                setClearEmailDisplay("block");
+                setCheckEmailDisplay("none");
+                emailH3.style.display = "block";
+                emailH3.innerHTML = "중복된 이메일 입니다.";
+                emailH3.style.color = "#c62917"
+            } else if(e.target.value.length < 6) {
+                setClearEmailDisplay("block");
+                setCheckEmailDisplay("none");
+                emailH3.style.display = "block";
+                emailH3.innerHTML = "이메일은 6글자 이상이여야 합니다.";
+                emailH3.style.color = "#c62917"
+            }
+        } catch(e) {
+
         }
     };
     const nameCheck = (e) => {
-        if(e.target.value.length < 2) {
-            setClearNameDisplay("block");
-            setCheckNameDisplay("none");
-        } else {
+        const nameH3 = document.querySelector('.nameAvailable');
+
+        if(e.target.value.length >= 2) {
             setName(e.target.value);
             setCheckNameDisplay("block");
             setClearNameDisplay("none");
+            nameH3.style.display = "block";
+            nameH3.innerHTML = "사용 가능한 이름입니다.";
+            nameH3.style.color = "green";
+        } else if(e.target.value.length < 2) {
+            setClearNameDisplay("block");
+            setCheckNameDisplay("none");
+            nameH3.style.display = "block";
+            nameH3.innerHTML = "이름을 다시 확인해주세요.";
+            nameH3.style.color = "#c62917"
         }
     };
-    const nicknameCheck = (e) => {
-        if(e.target.value.length < 3) {
-            setClearNicknameDisplay("block");
-            setCheckNicknameDisplay("none");
-        } else {
-            setNickname(e.target.value);
-            setCheckNicknameDisplay("block");
-            setClearNicknameDisplay("none");
+    const nicknameCheck = async(e) => {
+        try {
+            const responseCheckNickname = await axios.post('http://localhost:3001/checknickname', { nickname: e.target.value });    
+            const nicknameH3 = document.querySelector('.nicknameAvailable');
+
+            if(responseCheckNickname.data.tf === true && e.target.value.length >= 3) {
+                setNickname(e.target.value);
+                setCheckNicknameDisplay("block");
+                setClearNicknameDisplay("none");
+                nicknameH3.style.display = "block";
+                nicknameH3.innerHTML = "사용 가능한 닉네임 입니다.";
+                nicknameH3.style.color = "green";
+            } else if(responseCheckNickname.data.tf === false){
+                setClearNicknameDisplay("block");
+                setCheckNicknameDisplay("none");
+                nicknameH3.style.display = "block";
+                nicknameH3.innerHTML = "중복된 닉네임 입니다.";
+                nicknameH3.style.color = "#c62917"
+            } else if(e.target.value.length < 3) {
+                setClearNicknameDisplay("block");
+                setCheckNicknameDisplay("none");
+                nicknameH3.style.display = "block";
+                nicknameH3.innerHTML = "닉네임은 3글자 이상이여야 합니다.";
+                nicknameH3.style.color = "#c62917"
+            }
+        } catch(e) {
+
         }
     };
 
@@ -136,7 +186,7 @@ function Register() {
             .then((json) => {
                 setId(json.text);
             });    
-
+            alert(user_name + "님, 회원가입을 축하합니다.");
             history.push("/login");
         } else {
             alert("입력사항을 다시 확인해주세요.");
@@ -155,15 +205,16 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkIdDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearIdDisplay }}/>    
                 </div>
-                <h3></h3>
+                <h3 className="available idAvailable"></h3>
             </div>
             <div className="input">
                 <div className="label"><label>비밀번호</label></div>
                 <div className="inputbox">
-                    <input onBlur={pwCheck} type="password" name="user_pw" maxlength="20" placeholder="비밀번호를 입력하세요." className="search" />
+                    <input onChange={pwCheck} type="password" name="user_pw" maxlength="20" placeholder="비밀번호를 입력하세요." className="search" />
                     <CheckIcon className="checkIcon"style={{ display: checkPwDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearPwDisplay }}/>  
                 </div>
+                <h3 className="available pwAvailable"></h3>
             </div>
             <div className="input">
                 <div className="label"><label>비밀번호 확인</label></div>
@@ -172,6 +223,7 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkRepwDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearRepwDisplay }}/>  
                 </div>
+                <h3 className="available repwAvailable"></h3>
             </div>
             <div className="input">
                 <div className="label"><label>이메일</label></div>
@@ -180,6 +232,7 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkEmailDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearEmailDisplay }}/>  
                 </div>
+                <h3 className="available emailAvailable"></h3>
             </div>
             <div className="input">
                 <div className="label"><label>이름</label></div>
@@ -188,6 +241,7 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkNameDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearNameDisplay }}/>  
                 </div>
+                <h3 className="available nameAvailable"></h3>
             </div>
             <div className="input">
                 <div className="label"><label>닉네임</label></div>
@@ -196,9 +250,14 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkNicknameDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearNicknameDisplay }}/>  
                 </div>
+                <h3 className="available nicknameAvailable"></h3>
             </div>
             <input onClick={submitId} type="button" value="가입하기"></input>
-            <h3>{overlapEmail}</h3>
+            <h3>{id}</h3>
+            <h3>{pw}</h3>
+            <h3>{email}</h3>
+            <h3>{user_name}</h3>
+            <h3>{nickname}</h3>
         </div>
     )    
 }
