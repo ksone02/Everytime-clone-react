@@ -1,7 +1,17 @@
 import React from 'react';
 import './LeftSide.css';
+import axios from 'axios';
 
 function LeftSide({user_id, user_name, user_nickname}) {
+
+    const logout = async() => {
+        try {
+            const logoutResponse = await axios.post('http://localhost:3001/logout');  
+            logoutResponse.withCredentials = true;
+        } catch(e) {
+            
+        }
+    }
 
     return (
         <div className="leftside">
@@ -16,7 +26,7 @@ function LeftSide({user_id, user_name, user_nickname}) {
                             <a href="/my">내 정보</a>
                         </li>
                         <li>
-                            <a href="/user/logout">로그아웃</a>
+                            <a href="/" onClick={logout}>로그아웃</a>
                         </li>
                     </ul>
                     <hr />

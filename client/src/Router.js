@@ -20,7 +20,7 @@ function Router() {
                 setSessionId(LoginCheckedResponse.data.user_id);
                 setSessionName(LoginCheckedResponse.data.user_name);
                 setSessionNickname(LoginCheckedResponse.data.user_nickname); 
-            } else {
+            } else if(LoginCheckedResponse.data.logined === false) {
                 setloginStatus(false);
             }
         }catch(e) {
@@ -32,7 +32,6 @@ function Router() {
     } );
     return (
         <div>
-            <h1>{sessionId}</h1>
             <BrowserRouter>
                 <Switch>
                     <Route path="/login" component={Login} />
@@ -45,6 +44,7 @@ function Router() {
                     <Route render={() => <div className='error'>에러 페이지</div>} />
                 </Switch>
             </BrowserRouter>
+            <h1>{loginStatus.toString()}</h1>
         </div>
     )
 }

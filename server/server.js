@@ -6,15 +6,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const mySQLStorage = require('express-mysql-session')(session);
 const axios = require('axios');
-
-var sessionStorage = new mySQLStorage({
-    host: "localhost",
-    user: "root",
-    password: "kimdongho99",
-    database: "mjclass"
-});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -142,28 +134,25 @@ app.post('/login', cors(), (req, res) => {
 });
 
 app.post('/loginchecked', (req, res) => {
-    console.log(session.logined);
     if(session.logined == undefined) {
         res.send({logined: false});
-        console.log(res.json);
-    } else {
+    }else {
         res.send({
             logined: session.logined,
             user_id: session.id,
             user_nickname: session.nickname,
             user_name: session.user_name
         });
-        console.log(res.json);
     }
 });
 
 
-app.get('/logout', (req, res) => {
-    if(req.session.loginData) {
-        session.logined = false;
-        console.log("세션정보 삭제")
+app.post('/logout', (req, res) => {
+    session.logined = false;
+    if(session.logined == true) {
+        console.log("삭제실패");
     } else {
-        console.log("세션정보 삭제 실패")
+        console.log("삭제성공");
     }
 })
 

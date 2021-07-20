@@ -9,7 +9,6 @@ function IsLogin({user_id, user_name, user_nickname}) {
         <div>
             <Nav />
             <Container user_id={user_id} user_name={user_name} user_nickname={user_nickname}/>
-            <h1>{user_id}</h1>
             <Footer />
         </div>
         //jshint ignore:end
