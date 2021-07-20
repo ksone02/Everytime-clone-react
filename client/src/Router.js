@@ -6,7 +6,9 @@ import Notlogin from './components/Notlogin';
 import Register from './components/Register';
 
 function Router() {
-    let isLogin = false;
+    let isLogin = (tf) => {
+        return tf;
+    } 
     return (
         <div>
             <BrowserRouter>

@@ -7,8 +7,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
-let isLogin = false;
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(bodyParser.json());
@@ -115,6 +113,8 @@ app.post('/checknickname', (req, res) => {
 app.post('/login', (req, res) => {
     var users_login = [req.body.id, req.body.pw]
     connection.query('SELECT * FROM users WHERE user_id = ?', users_login[0], (err, row) => {
+        let checkLogin = new Object();
+        checkLogin.tf = false;
         if(err) console.log(err);
 
         if(row.length > 0) {
@@ -122,27 +122,22 @@ app.post('/login', (req, res) => {
             console.log(users_login[1]);
             if(users_login[1] == row[0].user_password) {
                 console.log("로그인 성공");
-                req.session.loginData = users_login[0];
-                req.session.save();
-                isLogin = true;
+                checkLogin.tf = true;
+                res.send(checkLogin);
             } else {
                 console.log("비밀번호가 틀립니다.");
+                checkLogin.tf = false;
+                res.send(checkLogin);
             }
         } else {
             console.log('ID가 존재하지 않습니다.');
+            checkLogin.tf = false;
+            res.send(checkLogin);
         }
+        
     });
-    res.end();
 });
 
-app.get('/loginCheck', (req, res) => {
-    if(isLogin == true) {
-        res.send({loggedIn: true, loginData: req.session.loginData});
-        res.send(req.session.loginData);
-    } else {
-        res.send({loggedIn: false});
-    }
-});
 
 app.get('/logout', (req, res) => {
     if(req.session.loginData) {

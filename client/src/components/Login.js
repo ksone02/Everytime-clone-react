@@ -1,43 +1,31 @@
 import React, { useState } from 'react';
 import './Login.css';
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 function Login() {
 
+    let history = useHistory();
+
     const [id, setId] = useState("");
     const [pw, setPw] = useState("");
-    const [idCheck, setIdCheck] = useState(false);
-    const [pwCheck, setPwCheck] = useState(false);
 
     const idCheckFn = (e) => {setId(e.target.value) };
     const pwCheckFn = (e) => {setPw(e.target.value) };
 
-    const submitId = () => {
-        const post = {
-            id: id,
-            pw: pw,
-        };
-
-
-        
-        fetch("http://localhost:3001/login", {
-            method: "post",
-            headers: {
-                "content-type" : "application/json",
-            },
-            body: JSON.stringify(post),
-        })
-        .then((res) => res.json())
-        .then((json) => {
-            console.log("asdasdasdasd");
-            if(json === true){		// json을 받아왔는데 .tf 값이 true면 사용가능
-                alert("사용가능한 ID입니다");  //알람!
-                setIdCheck(true);
+    const submitId = async() => {
+        try {
+            const loginResponse = await axios.post('http://localhost:3001/login', { id: id, pw: pw });  
+            if(loginResponse.data.tf === true) {
+                alert("로그인성공");
+                history.push('/');
+            } else if(loginResponse.data.tf === false) {
+                alert("아이디와 비밀번호를 다시 확인해주세요.");
             }
-            else{
-                alert("다른 ID를 입력해주세요");
-            }
-        });    
-    };
+        } catch(e) {
+             alert("오류");
+        }
+    }
 
     return (
         <div className="loginDiv">
@@ -45,17 +33,17 @@ function Login() {
                 <h1 className="logo">
                     <a href="/">짭브리타임</a>
                 </h1>
-                <form onSubmit={submitId}>
+                <div>
                     <p className="input"><input onChange={idCheckFn}type="text" name="id" maxlength="20" className="text" placeholder="아이디" /></p>
                     <p className="input"><input onChange={pwCheckFn} type="password" name="pw" maxlength="20" className="text" placeholder="비밀번호" /></p>
-                    <p className="submit"><input type="submit" value="로그인" className="text" /></p>
+                    <p className="submit"><input onClick={submitId} type="button" value="로그인" className="text" /></p>
                     <label className="autologin"><input type="checkbox" name="autologin" value="1" />로그인 유지</label>
                     <p className="find"><a href="/forgot">아이디/비밀번호 찾기</a></p>
                     <p className="register">
                         <span>에브리타임에 처음이신가요?</span>
                         <a href="/register">회원가입</a>
                     </p>
-                </form>
+                </div>
             </div>
             <address>
                 <ul className="links">
