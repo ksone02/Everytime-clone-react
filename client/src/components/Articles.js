@@ -1,13 +1,15 @@
-import React from 'react'
+import React  from 'react';
+import './Articles.css';
 
-function Articles() {
+function Articles(props) {
     return (
+        <div>
         <article>
-            <a className="article" href="/377398/v/200129186">
-                <h2 className="medium">글 제목</h2>
-                <p className="small">글 내용</p>
-                <time className="small">시간</time>
-                <h3 className="small">익명</h3>
+            <a className="article" href={`/freeboardin/${props.number}`}>
+                <h2 className="medium">{props.title}</h2>
+                <p className="small">{props.content}</p>
+                <time className="small">{props.date}</time>
+                <h3 className="small">{props.userNickname}</h3>
                 <ul className="status">
                     <li title="공감" className="vote">좋아요수</li>
                     <li title="댓글" className="comment">댓글수</li>
@@ -16,6 +18,7 @@ function Articles() {
             </a>
             <div class="comments"></div>
         </article>
+        </div>
     )
 }
 

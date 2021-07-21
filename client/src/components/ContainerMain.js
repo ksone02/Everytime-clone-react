@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Articles from './Articles';
 import './ContainerMain.css';
 import axios from 'axios';
@@ -43,6 +43,20 @@ function ContainerMain(props) {
             alert("오류발생");
         }
     }
+
+    const [writeInfo, setWriteInfo] = useState([[]]);
+    const writeCheck = async() => {
+        try {
+            const writeCheckResponse = await axios.post('http://localhost:3001/writeCheck');
+            setWriteInfo(writeCheckResponse.data);
+        } catch(e) {
+            alert("오류발생");
+        }
+    }
+    useEffect(() => {
+        writeCheck();
+    })
+
     return (
         <div className="main">
             <div className="wrap title">
@@ -92,7 +106,30 @@ function ContainerMain(props) {
                     <div className="clearBothOnly"></div>
                 </form>
                 <a onClick={isWrite} id="writeArticleButton">새 글을 작성해주세요!</a>
-                
+                {
+                    writeInfo.map((v, i) => {
+                        let nowDate = new Date();
+                        const newDate = new Date(v.date);
+                        const elapsedMsec = nowDate.getTime() - newDate.getTime();
+                        const elapsedSec = elapsedMsec / 1000;
+                        const elapsedMin = elapsedSec / 60;
+                        const elapsedHour = elapsedMin / 60;
+                        const elapsedDay = elapsedHour / 24;
+                        const elapsedWeek = elapsedDay / 7;
+                        const elapsedMonth = elapsedWeek / 4;
+                        const elapsedYear = elapsedMonth / 4;
+                        let dateResult;
+                        if(elapsedYear > 1) dateResult = parseInt(elapsedYear) + "년";
+                        else if(12 > elapsedMonth && elapsedMonth > 1) dateResult = parseInt(elapsedMonth) + "개월";
+                        else if(4 > elapsedWeek && elapsedWeek > 1) dateResult = parseInt(elapsedWeek) + "주";
+                        else if(7 > elapsedDay && elapsedDay > 1) dateResult = parseInt(elapsedDay) + "일";
+                        else if(24 > elapsedHour && elapsedHour > 1) dateResult = parseInt(elapsedHour) + "시간";
+                        else if(60 > elapsedMin && elapsedMin > 1) dateResult = parseInt(elapsedMin) + "분";
+                        else if(60 > elapsedSec && elapsedSec > 1) dateResult = parseInt(elapsedSec) + "초";
+                        
+                        return <Articles key={i} number={v.number} title={v.title} content={v.content} userNickname={v.isAnony === 1 ? "익명" : v.userNickname} date={dateResult + "전"}/>
+                    })
+                }
                 <div className="clearBothOnly"></div>
                 <div className="pagination">
                     <form id="searchArticleForm" className="search">

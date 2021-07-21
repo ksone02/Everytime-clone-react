@@ -175,6 +175,15 @@ app.post('/writeFreeIn', (req, res) => {
     });    
 });
 
+app.post('/writeCheck', (req, res) => {
+    connection.query('SELECT * FROM board_free_in order by number desc', function(error, results) {
+        if(error) console.log("오류발생");
+        if(results) {
+            res.send(results);
+        }
+    });
+})
+
 app.listen(port, ()=>{
     console.log(`Connect at http://localhost:${port}`);
 });
