@@ -49,7 +49,7 @@ function Register() {
                 setClearIdDisplay("block");
                 setCheckIdDisplay("none");
                 idH3.style.display = "block";
-                idH3.innerHTML = "중복된 아이디 입니다.";
+                idH3.innerHTML = "이미 사용중인 아이디 입니다.";
                 idH3.style.color = "#c62917"
             } else if(e.target.value.length < 6) {
                 setClearIdDisplay("block");
@@ -105,7 +105,7 @@ function Register() {
                 setClearEmailDisplay("block");
                 setCheckEmailDisplay("none");
                 emailH3.style.display = "block";
-                emailH3.innerHTML = "중복된 이메일 입니다.";
+                emailH3.innerHTML = "이미 사용중인 이메일 입니다.";
                 emailH3.style.color = "#c62917"
             } else if(e.target.value.length < 6) {
                 setClearEmailDisplay("block");
@@ -152,7 +152,7 @@ function Register() {
                 setClearNicknameDisplay("block");
                 setCheckNicknameDisplay("none");
                 nicknameH3.style.display = "block";
-                nicknameH3.innerHTML = "중복된 닉네임 입니다.";
+                nicknameH3.innerHTML = "이미 사용중인 닉네임 입니다.";
                 nicknameH3.style.color = "#c62917"
             } else if(e.target.value.length < 3) {
                 setClearNicknameDisplay("block");
@@ -253,11 +253,6 @@ function Register() {
                 <h3 className="available nicknameAvailable"></h3>
             </div>
             <input onClick={submitId} type="button" value="가입하기"></input>
-            <h3>{id}</h3>
-            <h3>{pw}</h3>
-            <h3>{email}</h3>
-            <h3>{user_name}</h3>
-            <h3>{nickname}</h3>
         </div>
     )    
 }

@@ -9,7 +9,7 @@ function LeftSide({user_id, user_name, user_nickname}) {
             const logoutResponse = await axios.post('http://localhost:3001/logout');  
             logoutResponse.withCredentials = true;
         } catch(e) {
-            
+
         }
     }
 
@@ -34,9 +34,9 @@ function LeftSide({user_id, user_name, user_nickname}) {
             </div>
             <div className="card">
                 <div className="menus">
-                    <a href="/myarticle" class="myarticle">내가 쓴 글</a>
-                    <a href="/mycommentarticle" class="mycommentarticle">댓글 단 글</a>
-                    <a href="/myscrap" class="myscrap">내 스크랩</a>
+                    <a href="/myarticle" className="myarticle">내가 쓴 글</a>
+                    <a href="/mycommentarticle" className="mycommentarticle">댓글 단 글</a>
+                    <a href="/myscrap" className="myscrap">내 스크랩</a>
                 </div>
             </div>
             <div className="card">

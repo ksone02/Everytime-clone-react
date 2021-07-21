@@ -219,3 +219,98 @@ div.articles div.pagination > a {
     background-size: 10px 10px;
     cursor: pointer;
 }
+
+div.articles > form.write {
+    position: relative;
+    margin-bottom: 5px;
+    border: 2px solid #d6d6d6;
+    box-sizing: border-box;
+}
+
+div.articles > form.write p {
+    padding: 15px;
+    border-bottom: 1px solid #e3e3e3;
+    background-color: #fff;
+}
+
+div.articles > form.write input.file {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+div.articles > form.write input.title {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    border: 0;
+    color: #292929;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.clearBothOnly {
+    clear: both !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+}
+
+div.articles > form.write ul.option li {
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 40px 40px;
+    cursor: pointer;
+}
+
+div.articles > form.write ul.option li.hashtag {
+    float: left;
+    background-image: url(https://everytime.kr/images/new/container.articles.write.hashtag.png);
+}
+
+div.articles > form.write ul.option li.attach {
+    float: left;
+    background-image: url(https://everytime.kr/images/new/container.articles.write.attach.png);
+}
+
+div.articles > form.write ul.option li.submit {
+    float: right;
+    background-color: #c62917;
+    background-image: url(https://everytime.kr/images/new/container.articles.write.submit.png);
+}
+
+div.articles > form.write ul.option li.anonym {
+    float: right;
+    margin-right: 15px;
+    background-image: url(https://everytime.kr/images/new/container.articles.write.anonym.png);
+}
+
+div.articles > form.write textarea.large {
+    height: 370px;
+}
+
+div.articles > form.write textarea {
+    width: 100%;
+    height: 90px;
+    border: 0;
+    color: #292929;
+    font-size: 12px;
+    resize: none;
+    font-family: "맑은 고딕", tahoma;
+}
+
+div.articles > form.write *:focus {
+    outline: none;
+}
+
+div.articles > form.write {
+    display: none;
+}
+
+div.articles > form.write ul.option li.anonym.active {
+    background-image: url(https://everytime.kr/images/new/container.articles.write.anonym.active.png);
+}

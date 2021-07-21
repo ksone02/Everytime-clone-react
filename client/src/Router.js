@@ -44,7 +44,6 @@ function Router() {
                     <Route render={() => <div className='error'>에러 페이지</div>} />
                 </Switch>
             </BrowserRouter>
-            <h1>{loginStatus.toString()}</h1>
         </div>
     )
 }
