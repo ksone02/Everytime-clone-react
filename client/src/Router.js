@@ -5,6 +5,7 @@ import IsLogin from './components/IsLogin';
 import Notlogin from './components/Notlogin';
 import Register from './components/Register';
 import axios from 'axios';
+import ArticlesPlus from './components/ArticlesPlus';
 
 function Router() {
     const [loginStatus, setloginStatus] = useState(false);
@@ -36,9 +37,14 @@ function Router() {
                 <Switch>
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
-                    <Route path="/" exact>
+                    <Route path="/main" exact>
                         {loginStatus === true 
                         ? <IsLogin user_id={sessionId} user_name={sessionName} user_nickname={sessionNickname} />
+                        : <Notlogin />}
+                    </Route>
+                    <Route path="/main/freeboardin">
+                        {loginStatus === true 
+                        ? <ArticlesPlus  />
                         : <Notlogin />}
                     </Route>
                     <Route render={() => <div className='error'>에러 페이지</div>} />

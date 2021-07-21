@@ -5,7 +5,7 @@ function Articles(props) {
     return (
         <div>
         <article>
-            <a className="article" href={`/freeboardin/${props.number}`}>
+            <a className="article" href={`/main/freeboardin/${props.number}`}>
                 <h2 className="medium">{props.title}</h2>
                 <p className="small">{props.content}</p>
                 <time className="small">{props.date}</time>
