@@ -9,7 +9,7 @@ function Container({user_id, user_name, user_nickname}) {
         <div id="container" className="community">
             <LeftSide user_id={user_id} user_name={user_name} user_nickname={user_nickname}/>
             <RightSide />
-            <ContainerMain />
+            <ContainerMain user_nickname={user_nickname}/>
         </div>
     )
 }

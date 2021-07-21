@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Articles from './Articles';
 import './ContainerMain.css';
+import axios from 'axios';
 
-function ContainerMain() {
+function ContainerMain(props) {
+    
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
+    const [isanon, setIsanon] = useState(false);
+
+    const titleCheck = (e) => {
+        setTitle(e.target.value);
+    }
+    const contentCheck = (e) => {
+        setContent(e.target.value);
+    }
+
     const isWrite = () => {
         const formDiv = document.querySelector('.writeForm');
         const writeBtn = document.querySelector('#writeArticleButton');
@@ -10,16 +23,24 @@ function ContainerMain() {
         writeBtn.style.display = "none";
         console.log("실행");
     }
-    let isanon = false;
+    
     const isAnony = () => {
         const anonBtn = document.querySelector('.anonym');
-        
         if(!isanon) {
-            isanon = true;
+            setIsanon(true);
             anonBtn.classList.toggle('active');
         } else if(isanon) {
-            isanon = false;
+            setIsanon(false);
             anonBtn.classList.toggle('active');
+        }
+    }
+
+    const write = async() => {
+        try {
+            const writeResponse = await axios.post('http://localhost:3001/writeFreeIn', { title: title, content: content, userNickname: props.user_nickname, isAnony: isanon  });    
+            
+        } catch(e) {
+            alert("오류발생");
         }
     }
     return (
@@ -27,17 +48,16 @@ function ContainerMain() {
             <div className="wrap title">
                 <h1>
                     <a href="/377398">인문캠 자유게시판</a>
-                    {isanon.toString()}
                 </h1>
                 <hr />
             </div>
             <div className="wrap articles">
                 <form className="write writeForm">
                     <p>
-                        <input name="title" autoComplete="off" placeholder="글 제목" className="title" />
+                        <input onChange={titleCheck} name="title" autoComplete="off" placeholder="글 제목" className="title" />
                     </p>
                     <p>
-                        <textarea name="text" placeholder="에브리타임은 누구나 기분 좋게 참여할 수 있는 커뮤니티를 만들기 위해 커뮤니티 이용규칙을 제정하여 운영하고 있습니다. 위반 시 게시물이 삭제되고 서비스 이용이 일정 기간 제한될 수 있습니다. &#13;
+                        <textarea onChange={contentCheck} name="text" placeholder="에브리타임은 누구나 기분 좋게 참여할 수 있는 커뮤니티를 만들기 위해 커뮤니티 이용규칙을 제정하여 운영하고 있습니다. 위반 시 게시물이 삭제되고 서비스 이용이 일정 기간 제한될 수 있습니다. &#13;
 
                         아래는 이 게시판에 해당하는 핵심 내용에 대한 요약 사항이며, 게시물 작성 전 커뮤니티 이용규칙 전문을 반드시 확인하시기 바랍니다. &#13;
                         
@@ -66,13 +86,13 @@ function ContainerMain() {
                     <ul className="option">
                         <li title="해시태그" className="hashtag"></li>
                         <li title="첨부" className="attach"></li>
-                        <li title="완료" className="submit"></li>
+                        <li onClick={write} title="완료" className="submit"></li>
                         <li onClick={isAnony} title="익명" className="anonym"></li>
                     </ul>
                     <div className="clearBothOnly"></div>
                 </form>
                 <a onClick={isWrite} id="writeArticleButton">새 글을 작성해주세요!</a>
-                <Articles />
+                
                 <div className="clearBothOnly"></div>
                 <div className="pagination">
                     <form id="searchArticleForm" className="search">

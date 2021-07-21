@@ -156,6 +156,25 @@ app.post('/logout', (req, res) => {
     }
 })
 
+app.post('/writeFreeIn', (req, res) => {
+    var today = new Date();
+    var boardInfo = {
+        "title": req.body.title,
+        "content": req.body.content,
+        "userNickname": req.body.userNickname,
+        "isAnony": req.body.isAnony,
+        "date": today,
+    }
+
+    connection.query('INSERT INTO board_free_in SET ?' , boardInfo, function (error, results, fields) {
+        if (error) {
+            console.log("에러발생");
+        } else {
+            console.log(results);
+        }
+    });    
+});
+
 app.listen(port, ()=>{
     console.log(`Connect at http://localhost:${port}`);
 });
