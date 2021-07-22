@@ -1,21 +1,28 @@
-import React  from 'react';
+import React, { useState }  from 'react';
+import { Link } from 'react-router-dom';
 import './Articles.css';
 
 function Articles(props) {
+
     return (
         <div>
         <article>
-            <a className="article" href={`/main/freeboardin/${props.number}`}>
-                <h2 className="medium">{props.title}</h2>
-                <p className="small">{props.content}</p>
-                <time className="small">{props.date}</time>
-                <h3 className="small">{props.userNickname}</h3>
-                <ul className="status">
-                    <li title="공감" className="vote">좋아요수</li>
-                    <li title="댓글" className="comment">댓글수</li>
-                </ul>
-                <hr />
-            </a>
+            <Link to={{
+                pathname: `/main/${props.number}`
+            }}>
+                <a className="article">
+                    <h2 className="medium">{props.title}</h2>
+                    <p className="small">{props.content}</p>
+                    <time className="small">{props.date}</time>
+                    <h3 className="small">{props.userNickname}</h3>
+                    <ul className="status">
+                        <li title="공감" className="vote">좋아요수</li>
+                        <li title="댓글" className="comment">댓글수</li>
+                    </ul>
+                    <hr />
+                </a>
+            </Link>
+            
             <div class="comments"></div>
         </article>
         </div>

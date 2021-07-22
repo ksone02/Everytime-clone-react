@@ -1,0 +1,265 @@
+article img.picture.large {
+    margin: 0 10px 15px 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+article div.profile {
+    float: left;
+    margin-bottom: 15px;
+    height: 40px;
+}
+
+article img.picture {
+    float: left;
+}
+
+article h3 {
+    color: #292929;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+article h3.large {
+    height: 20px;
+    max-width: 200px;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+article time.large {
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+}
+
+article span.category, #container > div.articles > article time {
+    color: #a6a6a6;
+    letter-spacing: 0;
+}
+
+article ul.status {
+    float: right;
+}
+
+article ul.status li {
+    float: left;
+    margin-left: 8px;
+    padding: 0 2px;
+    height: 20px;
+    line-height: 20px;
+    color: #a6a6a6;
+    font-size: 12px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 11px 11px;
+    cursor: pointer;
+}
+
+article hr {
+    clear: both;
+    height: 0;
+    border: 0;
+}
+
+article h2.large {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+article h2 {
+    color: #292929;
+}
+
+article p.large {
+    padding-bottom: 15px;
+    line-height: 20px;
+    color: #444444;
+    font-size: 14px;
+}
+
+article p {
+    word-break: break-all;
+}
+
+article ul.status.left {
+    float: left;
+}
+
+.left {
+    text-align: left !important;
+}
+
+article ul.status.left li {
+    margin-left: 0;
+    margin-right: 8px;
+    cursor: auto;
+}
+
+article ul.status li.vote {
+    padding-left: 15px;
+    color: #c62917;
+    background-image: url(https://everytime.kr/images/new/container.articles.vote.png);
+}
+
+article ul.status li.comment {
+    padding-left: 15px;
+    color: #0ca5af;
+    background-image: url(https://everytime.kr/images/new/container.articles.comment.png);
+}
+
+article ul.status li.scrap {
+    padding-left: 15px;
+    color: #ffcc1c;
+    background-image: url(https://everytime.kr/images/new/container.articles.scrap.png);
+}
+
+article div.buttons {
+    display: flex;
+    padding-top: 16px;
+}
+
+article div.buttons span.posvote {
+    background-image: url(https://everytime.kr/images/container.articles.buttons.posvote.png);
+}
+
+article div.buttons span.scrap {
+    background-image: url(https://everytime.kr/images/container.articles.buttons.scrap.png);
+}
+
+article div.buttons span {
+    margin-right: 4px;
+    padding: 0 12px 0 27px;
+    line-height: 30px;
+    border-radius: 8px;
+    color: #737373;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    background-repeat: no-repeat;
+    background-position: left 12px center;
+    background-size: 11px 11px;
+}
+
+article > div.comments article.parent {
+    padding: 15px 15px 0 15px;
+    border-top: 1px solid #e3e3e3;
+}
+
+article > div.comments article {
+    margin: 0;
+    border: 0;
+    background-color: #fff;
+}
+
+article img.picture.medium {
+    margin: 0 5px 5px 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+article img.picture {
+    float: left;
+}
+
+article h3.medium {
+    float: left;
+    max-width: 90px;
+    margin: 0 10px 5px 0;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+article h3 {
+    color: #292929;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.comments article p.large {
+    padding-bottom: 5px;
+} 
+
+
+article time {
+    padding-bottom: 5px;
+}
+
+article time.medium {
+    float: left;
+    margin-bottom: 5px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+}
+
+article ul.commentvotestatus {
+    float: left;
+}
+
+article form.writecomment {
+    position: relative;
+    border-top: 1px solid #e3e3e3;
+    background-color: #f8f8f8;
+}
+
+article form.writecomment input.text {
+    margin: 0;
+    padding: 10px 95px 10px 10px;
+    border: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 20px;
+    box-sizing: border-box;
+    color: #262626;
+    font-size: 13px;
+    overflow: hidden;
+    resize: none;
+    background-color: transparent;
+}
+
+article form.writecomment ul.option {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 40px;
+    font-size: 0;
+}
+
+article form.writecomment ul.option li.anonym {
+    margin-right: 5px;
+    background-image: url(https://everytime.kr/images/new/container.articles.write.anonym.png);
+}
+
+article form.writecomment ul.option li {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 40px 40px;
+    cursor: pointer;
+}
+
+article form.writecomment ul.option li.submit {
+    background-color: #c62917;
+    background-image: url(https://everytime.kr/images/new/container.articles.write.submit.png);
+}
+
+article form.writecomment *:focus {
+    outline: none;
+}
+
+article > div.comments article::after {
+    content: "";
+    display: block;
+    clear: both;
+}

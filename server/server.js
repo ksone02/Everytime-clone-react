@@ -164,6 +164,7 @@ app.post('/writeFreeIn', (req, res) => {
         "userNickname": req.body.userNickname,
         "isAnony": req.body.isAnony,
         "date": today,
+        "board": "freeboardIn"
     }
 
     connection.query('INSERT INTO board_free_in SET ?' , boardInfo, function (error, results, fields) {
@@ -183,6 +184,15 @@ app.post('/writeCheck', (req, res) => {
         }
     });
 })
+
+app.post('/postDetail', (req, res) => {
+    connection.query('SELECT * FROM board_free_in WHERE number = ?', [req.body.number], function(err, result) {
+        if(err) console.log("오류");
+        if(result) {
+            res.send(result);
+        }
+    });
+});
 
 app.listen(port, ()=>{
     console.log(`Connect at http://localhost:${port}`);

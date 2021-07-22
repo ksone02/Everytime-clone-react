@@ -6,12 +6,12 @@ article {
     background-color: #fff;
 }
 
-article > a.article {
+article a.article {
     display: block;
     padding: 15px;
 }
 
-article > div.comments {
+article div.comments {
     display: none;
 }
 
