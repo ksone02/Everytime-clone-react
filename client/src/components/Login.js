@@ -19,7 +19,7 @@ function Login() {
             loginResponse.withCredentials = true;
             if(loginResponse.data.tf === true) {
                 alert("로그인성공");
-                window.location.replace('/');
+                window.location.replace('/main');
             } else if(loginResponse.data.tf === false) {
                 alert("아이디와 비밀번호를 다시 확인해주세요.");
             }

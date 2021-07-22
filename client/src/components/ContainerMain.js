@@ -21,7 +21,16 @@ function ContainerMain(props) {
         const writeBtn = document.querySelector('#writeArticleButton');
         formDiv.style.display = "block";
         writeBtn.style.display = "none";
-        console.log("실행");
+    }
+    const doneWrite = () => {
+        const formDiv = document.querySelector('.writeForm');
+        const writeBtn = document.querySelector('#writeArticleButton');
+        const textarea = document.getElementsByTagName('textarea')[0];
+        const title = document.getElementsByClassName('writeForm')[0].getElementsByClassName('title')[0];
+        textarea.value = "";
+        title.value = "";
+        formDiv.style.display = "none";
+        writeBtn.style.display = "block";
     }
     
     const isAnony = () => {
@@ -37,8 +46,8 @@ function ContainerMain(props) {
 
     const write = async() => {
         try {
-            const writeResponse = await axios.post('http://localhost:3001/writeFreeIn', { title: title, content: content, userNickname: props.user_nickname, isAnony: isanon  });    
-            window.location.reload();  
+            doneWrite();
+            await axios.post('http://localhost:3001/writeFreeIn', { title: title, content: content, userNickname: props.user_nickname, isAnony: isanon  });    
         } catch(e) {
             alert("오류발생");
         }
@@ -125,7 +134,7 @@ function ContainerMain(props) {
                         else if(7 > elapsedDay && elapsedDay > 1) dateResult = parseInt(elapsedDay) + "일";
                         else if(24 > elapsedHour && elapsedHour > 1) dateResult = parseInt(elapsedHour) + "시간";
                         else if(60 > elapsedMin && elapsedMin > 1) dateResult = parseInt(elapsedMin) + "분";
-                        else if(60 > elapsedSec && elapsedSec > 1) dateResult = "방금";
+                        else if(60 > elapsedSec) dateResult = "방금";
                         
                         return <Articles key={i} number={v.number} title={v.title} content={v.content} userNickname={v.isAnony === 1 ? "익명" : v.userNickname} date={dateResult + "전"}/>
                     })

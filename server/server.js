@@ -170,7 +170,7 @@ app.post('/writeFreeIn', (req, res) => {
         if (error) {
             console.log("에러발생");
         } else {
-            console.log(results);
+            console.log(boardInfo);
         }
     });    
 });
