@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './RightSide.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function RightSide() {
     const [writeInfo, setWriteInfo] = useState([[]]);
@@ -25,7 +26,7 @@ function RightSide() {
                     <h3>
                         <p>실시간 인기 글</p>
                     </h3>
-                    <a className="article" href="/377398/v/200018326">
+                    <Link className="article" to={`/main/freeboardin/${writeInfo[0].number}`}>
                         <p className="title">{writeInfo[0].title}</p>
                         <p className="small">{writeInfo[0].content}</p>
                         <h4>인문캠 자유게시판</h4>
@@ -34,7 +35,7 @@ function RightSide() {
                             <li className="comment active">1</li>
                         </ul>
                         <hr />
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="card">
