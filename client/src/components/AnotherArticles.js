@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './AnotherArticles.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function AnotherArticles(props) {
+    const [boardName, setBoardName] = useState("");
+    const checkBoard = async() => {
+        try {
+            const checkBoardResponse = await axios.post('http://localhost:3001/checkboard', {boardNumber: props.boardNum});
+            setBoardName(checkBoardResponse.data[0].boardName);
+        } catch(e) {
+            
+        }
+    }
+    useEffect(() => {
+        checkBoard();
+    })
     return (
         <article>
             <Link to={{
-                pathname: `/main/freeboardin/${props.number}`
+                pathname: `/main/${props.boardNum}/${props.number}`
             }} className="article">
                 <img src="https://cf-fpi.everytime.kr/0.png" className="picture medium"alt="profile"/>
                 <h3 className="medium">{props.userNickname}</h3>
@@ -15,10 +28,10 @@ function AnotherArticles(props) {
                 <h2 className="medium bold">{props.title}</h2>
                 <p className="medium">{props.content}</p>
                 <hr />
-                <h3 className="boardname">인문캠 자유게시판</h3>
+                <h3 className="boardname">{boardName}</h3>
                 <ul className="status">
                     <li title="공감" className="vote">{props.likeNum}</li>
-                    <li title="댓글" className="comment">11</li>
+                    <li title="댓글" className="comment">1</li>
                 </ul>
                 <hr />
                 <input type="hidden" name="200806133_comment_anonym" value="0"/>

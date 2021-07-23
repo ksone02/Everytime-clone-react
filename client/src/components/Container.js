@@ -14,13 +14,13 @@ function Container({user_id, user_name, user_nickname}) {
                 <LeftSide user_id={user_id} user_name={user_name} user_nickname={user_nickname}/>    
             </Route>
             <RightSide />
-            <Route path="/main/freeboardin" exact>
-                <ContainerMain user_id={user_id} user_name={user_name} user_nickname={user_nickname}/>    
-            </Route>
             <Route path="/main/myarticles" exact>
                 <MyArticles user_nickname={user_nickname}/>
             </Route>
-            <Route path="/main/freeboardin/:userId" exact render={() => <ArticlesPlus />} />
+            <Route path="/main/board/:boardNum" exact>
+                <ContainerMain user_id={user_id} user_name={user_name} user_nickname={user_nickname}/>    
+            </Route>
+            <Route path="/main/board/:boardNum/:userId" exact render={() => <ArticlesPlus />} />
         </div>
     )
 }

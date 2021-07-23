@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import Articles from './Articles';
 import './ContainerMain.css';
 import axios from 'axios';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 function ContainerMain(props) {
     
@@ -49,21 +49,21 @@ function ContainerMain(props) {
     const write = async() => {
         try {
             doneWrite();
-            await axios.post('http://localhost:3001/writeFreeIn', { title: title, content: content, userNickname: props.user_nickname, isAnony: isanon  });    
+            await axios.post('http://localhost:3001/writeFreeIn', { title: title, content: content, userNickname: props.user_nickname, isAnony: isanon, board: props.match.params.boardNum  });    
         } catch(e) {
-            alert("오류발생");
+            alert("오류발생 write");
         }
     }
 
     const [writeInfo, setWriteInfo] = useState([[]]);
-    const writeCheck = useCallback(async() => {
+    const writeCheck = async() => {
         try {
-            const writeCheckResponse = await axios.post('http://localhost:3001/writeCheck');
+            const writeCheckResponse = await axios.post('http://localhost:3001/writeCheck', {board: props.match.params.boardNum});
             setWriteInfo(writeCheckResponse.data);
         } catch(e) {
-            alert("오류발생");
+            alert("오류발생 writecheck");
         }
-    }, [])
+    }
 
     const checkDate = (date) => {
         let nowDate = new Date();
@@ -88,20 +88,31 @@ function ContainerMain(props) {
         return dateResult;
     }
 
+    const [boardName, setBoardName] = useState("");
+    const checkBoard = async() => {
+        try {
+            const checkBoardResponse = await axios.post('http://localhost:3001/checkboard', {boardNumber: props.match.params.boardNum});
+            setBoardName(checkBoardResponse.data[0].boardName);
+        } catch(e) {
+            
+        }
+    }
+
     useEffect(() => {
         writeCheck();
-    },[writeCheck]);
+        checkBoard();
+    });
 
     return (
         <div className="main">
             <div className="wrap title">
                 <h1>
-                    <a href="/377398">인문캠 자유게시판</a>
+                    <a href="/377398">{boardName}</a>
                 </h1>
                 <hr />
             </div>
             <div className="wrap articles">
-            <Route path="/main/freeboardin" exact render={() => 
+            <Route path={`/main/board/${props.match.params.boardNum}`} exact render={() => 
                     <>
                         <form className="write writeForm">
                             <p>
@@ -145,7 +156,7 @@ function ContainerMain(props) {
                         <div onClick={isWrite} id="writeArticleButton">새 글을 작성해주세요!</div>
                         {
                             writeInfo.map((v, i) => {
-                                return <Articles key={i} number={v.number} title={v.title} content={v.content} userNickname={v.isAnony === 1 ? "익명" : v.userNickname} date={checkDate(v.date) + "전"} likeNum={v.likeNum} />
+                                return <Articles key={i} number={v.number} title={v.title} content={v.content} userNickname={v.isAnony === 1 ? "익명" : v.userNickname} date={checkDate(v.date) + "전"} likeNum={v.likeNum} boardNum={v.board}/>
                             })
                         }
                     </>
@@ -169,4 +180,4 @@ function ContainerMain(props) {
     )
 }
 
-export default ContainerMain
+export default withRouter(ContainerMain);

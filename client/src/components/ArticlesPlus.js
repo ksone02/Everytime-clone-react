@@ -11,6 +11,7 @@ function ArticlesPlus({match}) {
     const [date, setdate] = useState();
     const [likeNum, setlikeNum] = useState(0);
     const [isLikePost, setIsLikePost] = useState(false);
+    const [boardNum, setBoardNum] = useState();
 
     const checkDate = (date) => {
         let nowDate = new Date();
@@ -43,9 +44,9 @@ function ArticlesPlus({match}) {
             setisAnomy(detailPostResponse.data[0].isAnony);
             setdate(detailPostResponse.data[0].date);
             setlikeNum(detailPostResponse.data[0].likeNum);
-            console.log("불러오기성공");
+            setBoardNum(detailPostResponse.data[0].board);
         } catch(e) {
-            alert("오류발생");
+            alert("오류발생 detailpost");
         }
     }
     
@@ -62,14 +63,26 @@ function ArticlesPlus({match}) {
             alert("좋아요를 취소하셨습니다.");
         }
     }
+
+    const [boardName, setBoardName] = useState("");
+    const checkBoard = async() => {
+        try {
+            const checkBoardResponse = await axios.post('http://localhost:3001/checkboard', {boardNumber: boardNum});
+            setBoardName(checkBoardResponse.data[0].boardName);
+        } catch(e) {
+            
+        }
+    }
+
     useEffect(() => {
         detailPost();
+        checkBoard();
     } ) 
     return (
         <div className="main">
             <div className="wrap title">
                 <h1>
-                    <Link to="/main/freeboardin">인문캠 자유게시판</Link>
+                    <Link to={`/main/board/${match.params.boardNum}`}>{boardName}</Link>
                 </h1>
                 <hr />
             </div>
@@ -110,7 +123,7 @@ function ArticlesPlus({match}) {
                                 <li className="abuse">신고</li>
                             </ul>
                             <hr />
-                            <p className="large">나 여잔데 내 자취방 어때</p>
+                            <p className="large">댓글1(테스트)</p>
                             <time className="medium">방금</time>
                             <ul className="status commentvotestatus">
                                 <li className="vote commentvote" style={{display: "none"}}>0</li>

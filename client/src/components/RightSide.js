@@ -10,11 +10,20 @@ function RightSide() {
             const famousWriteCheck = await axios.post('http://localhost:3001/famouswrite');
             setWriteInfo(famousWriteCheck.data);
         } catch(e) {
-            alert("오류발생");
+            alert("오류발생 writecheck");
+        }
+    }
+    const [boardName, setBoardName] = useState("");
+    const checkBoard = async() => {
+        try {
+            const checkBoardResponse = await axios.post('http://localhost:3001/checkboard', {boardNumber: writeInfo[0].board});
+            setBoardName(checkBoardResponse.data[0].boardName);
+        } catch(e) {
         }
     }
     useEffect(() => {
         writeCheck();
+        checkBoard();
     })
     return (
         <div className="rightside">
@@ -29,7 +38,7 @@ function RightSide() {
                     <Link className="article" to={`/main/freeboardin/${writeInfo[0].number}`}>
                         <p className="title">{writeInfo[0].title}</p>
                         <p className="small">{writeInfo[0].content}</p>
-                        <h4>인문캠 자유게시판</h4>
+                        <h4>{boardName}</h4>
                         <ul className="status">
                             <li className="vote active">{writeInfo[0].likeNum}</li>
                             <li className="comment active">1</li>

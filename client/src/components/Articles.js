@@ -7,7 +7,7 @@ function Articles(props) {
     return (
         <article>
             <Link to={{
-                pathname: `/main/freeboardin/${props.number}`
+                pathname: `/main/board/${props.boardNum}/${props.number}`
             }} className="article">
                 <h2 className="medium">{props.title}</h2>
                 <p className="small">{props.content}</p>
@@ -15,7 +15,7 @@ function Articles(props) {
                 <h3 className="small">{props.userNickname}</h3>
                 <ul className="status">
                     <li title="공감" className="vote">{props.likeNum}</li>
-                    <li title="댓글" className="comment">댓글수</li>
+                    <li title="댓글" className="comment">1</li>
                 </ul>
                 <hr />
             </Link>
@@ -24,4 +24,4 @@ function Articles(props) {
     )
 }
 
-export default Articles
+export default Articles;

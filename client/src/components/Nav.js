@@ -39,8 +39,8 @@ function Nav() {
                     <div className="divider"></div>
                     <div className="group">
                         <ul>
-                            <li><Link to="/main/freeboardin" className="new">인문캠 자유게시판</Link></li>
-                            <li><a href="/377399" data-id="377399" className="new">자연캠 자유게시판</a></li>
+                            <li><Link to="/main/board/0" className="new">인문캠 자유게시판</Link></li>
+                            <li><Link to="/main/board/1"  className="new">자연캠 자유게시판</Link></li>
                             <li><a href="/375142" data-id="375142" className="new">비밀게시판</a></li>
                             <li><a href="/386032" data-id="386032" className="new">졸업생게시판</a></li>
                             <li><a href="/385883" data-id="385883" className="new">새내기게시판</a></li>

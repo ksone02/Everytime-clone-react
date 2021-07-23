@@ -21,7 +21,7 @@ exports.writeFreeIn = (req,res) => {
 }
 
 exports.writeCheck = (req,res) => {
-    db.connection.query('SELECT * FROM board_free_in order by number desc', function(error, results) {
+    db.connection.query('SELECT * FROM board_free_in WHERE board = ? order by number desc', [req.body.board],function(error, results) {
         if(error) console.log("오류발생");
         if(results) {
             res.send(results);
@@ -68,5 +68,14 @@ exports.famouswrite = (req,res) => {
     db.connection.query('SELECT * FROM board_free_in ORDER BY likeNum DESC', (err, result) => {
         if(err) console.log(err);
         if(result) res.send(result);
+    });
+}
+
+exports.checkboard = (req, res) => {
+    db.connection.query('SELECT boardName FROM board WHERE boardNumber = ?', [req.body.boardNumber], (err,result) => {
+        if(err) console.log(err);
+        if(result) {
+            res.send(result);
+        }
     });
 }

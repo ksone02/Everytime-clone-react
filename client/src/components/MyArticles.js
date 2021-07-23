@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import './MyArticles.css';
 import AnotherArticles from './AnotherArticles';
 import axios from 'axios';
@@ -19,18 +19,17 @@ function MyArticles(props) {
         
     }
     const [writeInfo, setWriteInfo] = useState([[]]);
-    const detailPost = useCallback(async() => {
+    const detailPost = async() => {
         try {
             const myarticlesResponse = await axios.post('http://localhost:3001/myarticles', {userNickname: props.user_nickname});
             setWriteInfo(myarticlesResponse.data);
         } catch(e) {
             alert("오류발생" + e);
         }
-    },[props.user_nickname])
-
+    }
     useEffect(() => {
         detailPost();
-    }, [detailPost]);
+    });
 
     return (
         <div className="main">
@@ -43,7 +42,7 @@ function MyArticles(props) {
             <div className="wrap articles">
                 {
                     writeInfo.map((v, i) => {
-                        return <AnotherArticles key={i} number={v.number} title={v.title} content={v.content} userNickname={v.isAnony === 1 ? "익명" : v.userNickname} date={checkDate(v.date)} likeNum={v.likeNum}/>
+                        return <AnotherArticles key={i} number={v.number} title={v.title} content={v.content} userNickname={v.isAnony === 1 ? "익명" : v.userNickname} date={checkDate(v.date)} likeNum={v.likeNum} boardNum={v.board} />
                     })
                 }
             </div>
