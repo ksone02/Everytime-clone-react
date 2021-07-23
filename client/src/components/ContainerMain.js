@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Articles from './Articles';
 import './ContainerMain.css';
 import axios from 'axios';
-import {BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import ArticlesPlus from './ArticlesPlus';
+import { Route } from 'react-router-dom';
 
 function ContainerMain(props) {
     
@@ -57,14 +56,14 @@ function ContainerMain(props) {
     }
 
     const [writeInfo, setWriteInfo] = useState([[]]);
-    const writeCheck = async() => {
+    const writeCheck = useCallback(async() => {
         try {
             const writeCheckResponse = await axios.post('http://localhost:3001/writeCheck');
             setWriteInfo(writeCheckResponse.data);
         } catch(e) {
             alert("오류발생");
         }
-    }
+    }, [])
 
     const checkDate = (date) => {
         let nowDate = new Date();
@@ -91,7 +90,7 @@ function ContainerMain(props) {
 
     useEffect(() => {
         writeCheck();
-    } )
+    },[writeCheck]);
 
     return (
         <div className="main">
@@ -143,10 +142,10 @@ function ContainerMain(props) {
                             </ul>
                             <div className="clearBothOnly"></div>
                         </form>
-                        <a onClick={isWrite} id="writeArticleButton">새 글을 작성해주세요!</a>
+                        <div onClick={isWrite} id="writeArticleButton">새 글을 작성해주세요!</div>
                         {
                             writeInfo.map((v, i) => {
-                                return <Articles key={i} number={v.number} title={v.title} content={v.content} userNickname={v.isAnony === 1 ? "익명" : v.userNickname} date={checkDate(v.date) + "전"} />
+                                return <Articles key={i} number={v.number} title={v.title} content={v.content} userNickname={v.isAnony === 1 ? "익명" : v.userNickname} date={checkDate(v.date) + "전"} likeNum={v.likeNum} />
                             })
                         }
                     </>

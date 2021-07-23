@@ -11,6 +11,11 @@ article a.article {
     padding: 15px;
 }
 
+article div.article {
+    display: block;
+    padding: 15px;
+}
+
 article div.comments {
     display: none;
 }

@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
 function Login() {
-
-    let history = useHistory();
 
     const [id, setId] = useState("");
     const [pw, setPw] = useState("");

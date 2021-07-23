@@ -1,6 +1,5 @@
 import React from 'react';
 import './Notlogin.css';
-import Login from './Login';
 
 function Notlogin() {
     return (

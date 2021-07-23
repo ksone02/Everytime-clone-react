@@ -17,7 +17,7 @@ function AnotherArticles(props) {
                 <hr />
                 <h3 className="boardname">인문캠 자유게시판</h3>
                 <ul className="status">
-                    <li title="공감" className="vote">0</li>
+                    <li title="공감" className="vote">{props.likeNum}</li>
                     <li title="댓글" className="comment">11</li>
                 </ul>
                 <hr />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Register.css';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
@@ -205,7 +205,6 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkIdDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearIdDisplay }}/>    
                 </div>
-                <h3 className="available idAvailable"></h3>
             </div>
             <div className="input">
                 <div className="label"><label>비밀번호</label></div>
@@ -214,7 +213,6 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkPwDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearPwDisplay }}/>  
                 </div>
-                <h3 className="available pwAvailable"></h3>
             </div>
             <div className="input">
                 <div className="label"><label>비밀번호 확인</label></div>
@@ -223,7 +221,6 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkRepwDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearRepwDisplay }}/>  
                 </div>
-                <h3 className="available repwAvailable"></h3>
             </div>
             <div className="input">
                 <div className="label"><label>이메일</label></div>
@@ -232,7 +229,6 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkEmailDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearEmailDisplay }}/>  
                 </div>
-                <h3 className="available emailAvailable"></h3>
             </div>
             <div className="input">
                 <div className="label"><label>이름</label></div>
@@ -241,7 +237,6 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkNameDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearNameDisplay }}/>  
                 </div>
-                <h3 className="available nameAvailable"></h3>
             </div>
             <div className="input">
                 <div className="label"><label>닉네임</label></div>
@@ -250,7 +245,6 @@ function Register() {
                     <CheckIcon className="checkIcon"style={{ display: checkNicknameDisplay }}/>    
                     <ClearIcon className="clearIcon" style={{ display: clearNicknameDisplay }}/>  
                 </div>
-                <h3 className="available nicknameAvailable"></h3>
             </div>
             <input onClick={submitId} type="button" value="가입하기"></input>
         </div>

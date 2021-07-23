@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import {BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import IsLogin from './components/IsLogin';
 import Notlogin from './components/Notlogin';
 import Register from './components/Register';
 import axios from 'axios';
-import ArticlesPlus from './components/ArticlesPlus';
 
 function Router() {
     const [loginStatus, setloginStatus] = useState(false);

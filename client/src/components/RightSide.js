@@ -10,7 +10,7 @@ function RightSide() {
             <div className="card">
                 <div className="board">
                     <h3>
-                        <a>실시간 인기 글</a>
+                        <p>실시간 인기 글</p>
                     </h3>
                     <a className="article" href="/377398/v/200018326">
                         <p className="title">글 제목</p>
