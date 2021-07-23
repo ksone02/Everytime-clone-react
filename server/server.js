@@ -200,8 +200,25 @@ app.post('/myarticles', (req,res) => {
         if(result) {
             res.send(result);
         }
-    })
-})
+    });
+});
+
+app.post('/like', (req, res) => {
+    connection.query('UPDATE board_free_in SET likeNum = likeNum + 1 WHERE number = ?', [req.body.number], function(err, result) {
+        if(err) console.log("좋아요 + 1 오류:" +err );
+        if(result) {
+            console.log("좋아요 + 1");
+        }
+    });
+});
+app.post('/dislike', (req, res) => {
+    connection.query('UPDATE board_free_in SET likeNum = likeNum - 1 WHERE number = ?', [req.body.number], function(err, result) {
+        if(err) console.log("좋아요 - 1오류");
+        if(result) {
+            console.log("좋아요 - 1");
+        }
+    });
+});
 
 app.listen(port, ()=>{
     console.log(`Connect at http://localhost:${port}`);

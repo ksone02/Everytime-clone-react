@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import './ArticlesPlus.css';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 function ArticlesPlus({match}) {
-    const [number, setnumber] = useState();
     const [title, settitle] = useState("");
     const [content, setcontent] = useState("");
     const [userNickname, setuserNickname] = useState("");
     const [isAnomy, setisAnomy] = useState(false);
     const [date, setdate] = useState();
+    const [likeNum, setlikeNum] = useState(0);
+    const [isLikePost, setIsLikePost] = useState(false);
 
     const checkDate = (date) => {
         let nowDate = new Date();
@@ -41,24 +42,40 @@ function ArticlesPlus({match}) {
             setuserNickname(detailPostResponse.data[0].userNickname);
             setisAnomy(detailPostResponse.data[0].isAnony);
             setdate(detailPostResponse.data[0].date);
+            setlikeNum(detailPostResponse.data[0].likeNum);
+            console.log("불러오기성공");
         } catch(e) {
             alert("오류발생");
         }
     }
+    
+    const likeBtn = () => {
+        if(!isLikePost) {
+            axios.post('http://localhost:3001/like', {number: match.params.userId}); 
+            setIsLikePost(true); 
+            console.log("false -> true");  
+            alert("좋아요를 눌렀습니다.");
+        } else {
+            axios.post('http://localhost:3001/dislike', {number: match.params.userId}); 
+            setIsLikePost(false);
+            console.log("true -> false");  
+            alert("좋아요를 취소하셨습니다.");
+        }
+    }
     useEffect(() => {
         detailPost();
-    }) 
+    } ) 
     return (
         <div className="main">
             <div className="wrap title">
                 <h1>
-                    <a href="/377398">인문캠 자유게시판</a>
+                    <Link to="/main/freeboardin">인문캠 자유게시판</Link>
                 </h1>
                 <hr />
             </div>
             <div className="wrap articles">
                 <article>
-                    <a className="article" >
+                    <div className="article" >
                         <img src="	https://cf-fpi.everytime.kr/0.png" className="picture large" alt="profile"/>
                         <div className="profile">
                             <h3 className="large">{isAnomy ? "익명" : userNickname}</h3>
@@ -72,16 +89,16 @@ function ArticlesPlus({match}) {
                         <h2 className="large">{title}</h2>
                         <p className="large">{content}</p>
                         <ul className="status left">
-                            <li title="공감" className="vote">0</li>
+                            <li title="공감" className="vote">{likeNum}</li>
                             <li title="댓글" className="comment">1</li>
                             <li title="스크랩" className="scrap">0</li>
                         </ul>
                         <hr />
                         <div className="buttons">
-                            <span className="posvote">공감</span>
+                            <span onClick = {likeBtn} className="posvote">공감</span>
                             <span className="scrap">스크랩</span>
                         </div>
-                    </a>
+                    </div>
                     <div className="comments" style={{display: "block"}}>
                         <article className="parent">
                             <img src="https://cf-fpi.everytime.kr/0.png" className="picture medium" alt="profile"/>
