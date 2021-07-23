@@ -35,8 +35,8 @@ function Login() {
                     <a href="/">짭브리타임</a>
                 </h1>
                 <div>
-                    <p className="input"><input onChange={idCheckFn}type="text" name="id" maxlength="20" className="text" placeholder="아이디" /></p>
-                    <p className="input"><input onChange={pwCheckFn} type="password" name="pw" maxlength="20" className="text" placeholder="비밀번호" /></p>
+                    <p className="input"><input onChange={idCheckFn}type="text" name="id" className="text" placeholder="아이디" /></p>
+                    <p className="input"><input onChange={pwCheckFn} type="password" name="pw" className="text" placeholder="비밀번호" /></p>
                     <p className="submit"><input onClick={submitId} type="button" value="로그인" className="text" /></p>
                     <label className="autologin"><input type="checkbox" name="autologin" value="1" />로그인 유지</label>
                     <p className="find"><a href="/forgot">아이디/비밀번호 찾기</a></p>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import "./Nav.css";
 
 function Nav() {
@@ -8,9 +9,9 @@ function Nav() {
             <nav>
                 <div className="wrap">
                     <div className="logo">
-                        <a href="/">
-                            <img src="https://everytime.kr/images/new/nav.logo.png" alt="logo" />
-                        </a>
+                        <Link to="/main">
+                                <img src="https://everytime.kr/images/new/nav.logo.png" alt="logo" />
+                        </Link>
                         <p>
                             <span className="name multiple">짭브리타임</span>
                             <span className="subname">명지클래스</span>
@@ -38,7 +39,7 @@ function Nav() {
                     <div className="divider"></div>
                     <div className="group">
                         <ul>
-                            <li><a href="/377398" data-id="377398" className="new">인문캠 자유게시판</a></li>
+                            <li><Link to="/main/freeboardin" className="new">인문캠 자유게시판</Link></li>
                             <li><a href="/377399" data-id="377399" className="new">자연캠 자유게시판</a></li>
                             <li><a href="/375142" data-id="375142" className="new">비밀게시판</a></li>
                             <li><a href="/386032" data-id="386032" className="new">졸업생게시판</a></li>

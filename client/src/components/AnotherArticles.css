@@ -1,0 +1,21 @@
+.bold {
+    font-weight: bold !important;
+}
+
+div.articles > article p.medium {
+    margin-bottom: 5px;
+    max-height: 100px;
+    line-height: 20px;
+    white-space: normal;
+    overflow: hidden;
+    color: #444444;
+    font-size: 14px;
+}
+
+div.articles > article h3.boardname {
+    float: left;
+    line-height: 15px;
+    color: #a6a6a6;
+    font-size: 12px;
+    width: auto;
+}

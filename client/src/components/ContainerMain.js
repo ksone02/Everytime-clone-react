@@ -102,7 +102,7 @@ function ContainerMain(props) {
                 <hr />
             </div>
             <div className="wrap articles">
-            <Route path="/main" exact render={() => 
+            <Route path="/main/freeboardin" exact render={() => 
                     <>
                         <form className="write writeForm">
                             <p>
@@ -151,7 +151,6 @@ function ContainerMain(props) {
                         }
                     </>
                 } />
-                <Route path="/main/:userId" exact render={() => <ArticlesPlus />} />
                 <div className="clearBothOnly"></div>
                 <div className="pagination">
                     <form id="searchArticleForm" className="search">

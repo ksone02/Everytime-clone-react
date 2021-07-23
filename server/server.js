@@ -194,6 +194,15 @@ app.post('/postDetail', (req, res) => {
     });
 });
 
+app.post('/myarticles', (req,res) => {
+    connection.query('SELECT * FROM board_free_in WHERE userNickname = ? order by number desc', [req.body.userNickname], function(err, result) {
+        if(err) console.log("error");
+        if(result) {
+            res.send(result);
+        }
+    })
+})
+
 app.listen(port, ()=>{
     console.log(`Connect at http://localhost:${port}`);
 });

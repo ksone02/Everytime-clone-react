@@ -3,13 +3,24 @@ import ContainerMain from './ContainerMain'
 import LeftSide from './LeftSide'
 import RightSide from './RightSide'
 import './Container.css';
+import { Route } from 'react-router-dom';
+import MyArticles from './MyArticles';
+import ArticlesPlus from './ArticlesPlus';
 
 function Container({user_id, user_name, user_nickname}) {
     return (
         <div id="container" className="community">
-            <LeftSide user_id={user_id} user_name={user_name} user_nickname={user_nickname}/>
+            <Route path="/main" exact>
+                <LeftSide user_id={user_id} user_name={user_name} user_nickname={user_nickname}/>    
+            </Route>
             <RightSide />
-            <ContainerMain user_nickname={user_nickname}/>
+            <Route path="/main/freeboardin" exact>
+                <ContainerMain user_id={user_id} user_name={user_name} user_nickname={user_nickname}/>    
+            </Route>
+            <Route path="/main/myarticles" exact>
+                <MyArticles user_nickname={user_nickname}/>
+            </Route>
+            <Route path="/main/freeboardin/:userId" exact render={() => <ArticlesPlus />} />
         </div>
     )
 }

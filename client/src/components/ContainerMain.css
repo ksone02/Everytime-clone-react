@@ -1,9 +1,9 @@
 @media only screen and (min-width: 641px) {
     div.main {
         position: relative;
-        left: 215px;
+        left: 25px;
         margin-top: 25px;
-        width: 605px;
+        width: 780px;
         top: 25px;
     }
 
@@ -11,7 +11,7 @@
         float: none;
         position: relative;
         margin-top: 25px;
-        width: 605px;
+        width: 780px;
     }
 }
 

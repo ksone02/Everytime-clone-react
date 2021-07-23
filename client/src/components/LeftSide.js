@@ -1,6 +1,7 @@
 import React from 'react';
 import './LeftSide.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function LeftSide({user_id, user_name, user_nickname}) {
 
@@ -26,7 +27,7 @@ function LeftSide({user_id, user_name, user_nickname}) {
                             <a href="/my">내 정보</a>
                         </li>
                         <li>
-                            <a href="/" onClick={logout}>로그아웃</a>
+                            <a href="/main" onClick={logout}>로그아웃</a>
                         </li>
                     </ul>
                     <hr />
@@ -34,7 +35,7 @@ function LeftSide({user_id, user_name, user_nickname}) {
             </div>
             <div className="card">
                 <div className="menus">
-                    <a href="/myarticle" className="myarticle">내가 쓴 글</a>
+                    <Link to="/main/myarticles" className="myarticle">내가 쓴 글</Link>
                     <a href="/mycommentarticle" className="mycommentarticle">댓글 단 글</a>
                     <a href="/myscrap" className="myscrap">내 스크랩</a>
                 </div>
