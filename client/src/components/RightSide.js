@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './RightSide.css';
+import axios from 'axios';
 
 function RightSide() {
+    const [writeInfo, setWriteInfo] = useState([[]]);
+    const writeCheck = async() => {
+        try {
+            const famousWriteCheck = await axios.post('http://localhost:3001/famouswrite');
+            setWriteInfo(famousWriteCheck.data);
+        } catch(e) {
+            alert("오류발생");
+        }
+    }
+    useEffect(() => {
+        writeCheck();
+    })
     return (
         <div className="rightside">
             <form className="search">
@@ -13,12 +26,12 @@ function RightSide() {
                         <p>실시간 인기 글</p>
                     </h3>
                     <a className="article" href="/377398/v/200018326">
-                        <p className="title">글 제목</p>
-                        <p className="small">글 내용</p>
-                        <h4>게시판 이름</h4>
+                        <p className="title">{writeInfo[0].title}</p>
+                        <p className="small">{writeInfo[0].content}</p>
+                        <h4>인문캠 자유게시판</h4>
                         <ul className="status">
-                            <li className="vote active">좋아요수</li>
-                            <li className="comment active">댓글수</li>
+                            <li className="vote active">{writeInfo[0].likeNum}</li>
+                            <li className="comment active">1</li>
                         </ul>
                         <hr />
                     </a>

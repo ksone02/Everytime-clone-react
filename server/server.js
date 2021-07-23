@@ -220,6 +220,13 @@ app.post('/dislike', (req, res) => {
     });
 });
 
+app.post('/famouswrite', (req, res) => {
+    connection.query('SELECT * FROM board_free_in ORDER BY likeNum DESC', (err, result) => {
+        if(err) console.log(err);
+        if(result) res.send(result);
+    })
+})
+
 app.listen(port, ()=>{
     console.log(`Connect at http://localhost:${port}`);
 });
