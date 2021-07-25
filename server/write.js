@@ -65,14 +65,26 @@ exports.dislike = (req,res) => {
 }
 
 exports.famouswrite = (req,res) => {
-    db.connection.query('SELECT * FROM board_free_in ORDER BY likeNum DESC', (err, result) => {
+    db.connection.query('SELECT * FROM board_free_in ORDER BY likeNum DESC LIMIT 1', (err, result) => {
         if(err) console.log(err);
-        if(result) res.send(result);
+        if(result) {
+            res.send(result)
+        };
     });
 }
 
 exports.checkboard = (req, res) => {
     db.connection.query('SELECT boardName FROM board WHERE boardNumber = ?', [req.body.boardNumber], (err,result) => {
+        if(err) console.log(err);
+        if(result) {
+            res.send(result);
+            console.log(result);
+        }
+    });
+}
+
+exports.hotarticles = (req, res) => {
+    db.connection.query("SELECT * FROM board_free_in WHERE likeNum >= 10", (err, result) => {
         if(err) console.log(err);
         if(result) {
             res.send(result);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './RightSide.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -10,21 +10,45 @@ function RightSide() {
             const famousWriteCheck = await axios.post('http://localhost:3001/famouswrite');
             setWriteInfo(famousWriteCheck.data);
         } catch(e) {
-            alert("오류발생 writecheck");
+            alert("오류발생 writecheckRightside");
         }
     }
     const [boardName, setBoardName] = useState("");
-    const checkBoard = async() => {
+    const checkBoard = useCallback(async() => {
+        if(writeInfo.length > 0) {
+            try {
+                let checkBoardResponse = null;
+                if(writeInfo[0].board){
+                    checkBoardResponse = await axios.post('http://localhost:3001/checkboard', {boardNumber: writeInfo[0].board});    
+                    if(checkBoardResponse.data.length > 0) setBoardName(checkBoardResponse.data[0].boardName);
+                }     
+            } catch(e) {
+                alert("오류발생 checkboardRightside: "+ e)
+            }    
+        }
+        
+    }, [writeInfo]);
+
+    const [writeInfoHot, setWriteInfoHot] = useState([[]]);
+    const hotWrite = async() => {
         try {
-            const checkBoardResponse = await axios.post('http://localhost:3001/checkboard', {boardNumber: writeInfo[0].board});
-            setBoardName(checkBoardResponse.data[0].boardName);
+            const hotArticleResponse = await axios.post('http://localhost:3001/hotarticles');
+            setWriteInfoHot(hotArticleResponse.data);
         } catch(e) {
+            alert("오류발생 hotwrite");
         }
     }
     useEffect(() => {
         writeCheck();
+    }, []);
+
+    useEffect(() => {
         checkBoard();
-    })
+    },[checkBoard]);
+
+    useEffect(() => {
+        hotWrite();
+    }, []);
     return (
         <div className="rightside">
             <form className="search">
@@ -35,7 +59,7 @@ function RightSide() {
                     <h3>
                         <p>실시간 인기 글</p>
                     </h3>
-                    <Link className="article" to={`/main/freeboardin/${writeInfo[0].number}`}>
+                    <Link className="article" to={`/main/board/${writeInfo[0].board}/${writeInfo[0].number}`}>
                         <p className="title">{writeInfo[0].title}</p>
                         <p className="small">{writeInfo[0].content}</p>
                         <h4>{boardName}</h4>
@@ -50,31 +74,23 @@ function RightSide() {
             <div className="card">
                 <div className="board">
                     <h3>
-                        <a href="/hotarticle">
+                        <Link to="/main/hotarticles">
                             HOT 게시물
                             <span>더 보기</span>
-                        </a>
+                        </Link>
                     </h3>
-                    <a className="list" href="/주소잉여잉여">
-                        <time>시간</time>
-                        <p>글 제목</p>
-                        <hr />
-                    </a>
-                    <a className="list" href="/주소잉여잉여">
-                        <time>시간</time>
-                        <p>글 제목</p>
-                        <hr />
-                    </a>
-                    <a className="list" href="/주소잉여잉여">
-                        <time>시간</time>
-                        <p>글 제목</p>
-                        <hr />
-                    </a>
-                    <a className="list" href="/주소잉여잉여">
-                        <time>시간</time>
-                        <p>글 제목</p>
-                        <hr />
-                    </a>
+                    {
+                        writeInfoHot.length > 0 ?
+                        <>
+                            <Link className="list" to={`/main/board/${writeInfoHot[0].board}/${writeInfoHot[0].number}`}>
+                                <time>{writeInfoHot[0].date}</time>
+                                <p>{writeInfoHot[0].title}</p>
+                                <hr />
+                            </Link>
+                        </>
+                        :
+                        <div className="list"> <p>게시물이 없습니다.</p> </div>
+                    }
                 </div>
             </div>
             <div className="card">

@@ -46,6 +46,7 @@ app.post('/like', write.like);
 app.post('/dislike', write.dislike);
 app.post('/famouswrite', write.famouswrite);
 app.post('/checkboard', write.checkboard);
+app.post('/hotarticles', write.hotarticles);
 
 
 app.listen(port, ()=>{
