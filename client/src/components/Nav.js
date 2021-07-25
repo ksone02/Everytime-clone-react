@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import "./Nav.css";
+import navLogo from '../images/nav-logo.png';
 
 function Nav() {
     return (
@@ -10,7 +11,7 @@ function Nav() {
                 <div className="wrap">
                     <div className="logo">
                         <Link to="/main">
-                                <img src="https://everytime.kr/images/new/nav.logo.png" alt="logo" />
+                                <img src={navLogo} alt="logo" />
                         </Link>
                         <p>
                             <span className="name multiple">짭브리타임</span>

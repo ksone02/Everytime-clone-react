@@ -1,5 +1,9 @@
 import React from 'react';
 import './Notlogin.css';
+import appstoreImg from '../images/appstore.png';
+import playstoreImg from '../images/playstore.png';
+import logo from '../images/logo.png';
+import { Link } from 'react-router-dom';
 
 function Notlogin() {
     return (
@@ -7,11 +11,11 @@ function Notlogin() {
         <div className="notlogin">
             <aside>
                 <div className="login">
-                    <a href="/" className="logo">
-                        <img src="https://everytime.kr/images/about/logo.png" alt="짭브리타임" />
-                    </a>
-                    <a href="/login" className="button login">로그인</a>
-                    <a href="/register" className="button register">짭브리타임 회원가입</a>
+                    <Link to="/main" className="logo">
+                        <img src={logo} alt="짭브리타임" />
+                    </Link>
+                    <Link to="/login" className="button login">로그인</Link>
+                    <Link to="/register" className="button register">짭브리타임 회원가입</Link>
                     <p className="find">
                         <a href="/forgot">아이디/비밀번호 찾기</a>
                     </p>
@@ -27,10 +31,10 @@ function Notlogin() {
                     </h1>
                     <div className="stores">
                         <a href="/page/mlink?lid=web_about&stores-playstore">
-                            <img src="https://everytime.kr/images/about/playstore.png" alt="에브리타임 - Play Store -Google" />
+                            <img src={playstoreImg} alt="에브리타임 - Play Store -Google" />
                         </a>
                         <a href="/page/mlink?lid=web_about&stores-appstore">
-                            <img src="https://everytime.kr/images/about/appstore.png" alt="에브리타임 - AppStore -Apple" />
+                            <img src={appstoreImg} alt="에브리타임 - AppStore -Apple" />
                         </a>
                     </div>
                     <hr />

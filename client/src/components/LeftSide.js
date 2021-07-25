@@ -2,6 +2,7 @@ import React from 'react';
 import './LeftSide.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import profile from '../images/0.png';
 
 function LeftSide({user_id, user_name, user_nickname}) {
 
@@ -18,7 +19,7 @@ function LeftSide({user_id, user_name, user_nickname}) {
         <div className="leftside">
             <div className="card pconly">
                 <form className="logged">
-                    <img src="https://cf-fpi.everytime.kr/0.png" className="picture" alt="profile"/>
+                    <img src={profile} className="picture" alt="profile"/>
                     <p className="nickname">{user_nickname}</p>
                     <p className="school">{user_name}</p>
                     <p className="school">{user_id}</p>
