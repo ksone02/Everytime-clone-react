@@ -85,13 +85,13 @@ article ul.status {
 article ul.status li.vote {
     padding-left: 15px;
     color: #c62917;
-    background-image: url(https://everytime.kr/images/new/container.articles.vote.png);
+    background-image: url(../images/containe-articles-vote.png);
 }
 
 article ul.status li.comment {
     padding-left: 15px;
     color: #0ca5af;
-    background-image: url(https://everytime.kr/images/new/container.articles.comment.png);
+    background-image: url(../images/container-articles-comment.png);
 }
 
 article ul.status li {

@@ -278,7 +278,7 @@ section.init > div.wrap > div.device > div.screen > div.home {
 
 section.init > div.wrap > div.device > div.screen > div.image {
     position: absolute;
-    background: transparent url(https://everytime.kr/images/about/screen.png) no-repeat 0px 0px / 840px auto;
+    background: transparent url(../images/screen.png) no-repeat 0px 0px / 840px auto;
 }
 
 section div.paragraph > p {

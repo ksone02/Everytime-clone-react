@@ -91,15 +91,15 @@ div.card div.menus a {
 }
 
 div.card div.menus a.myarticle {
-    background-image:  url(https://everytime.kr/images/new/container.community.card.myarticle.png);
+    background-image:  url(../images/container-community-card-myarticle.png);
 }
 
 div.card div.menus a.mycommentarticle {
-    background-image:  url(https://everytime.kr/images/new/container.community.card.mycommentarticle.png);
+    background-image:  url(../images/container-community-card-mycommentarticle.png);
 }
 
 div.card div.menus a.myscrap {
-    background-image:  url(https://everytime.kr/images/new/container.community.card.myscrap.png);
+    background-image:  url(../images/container-community-card-myscrap.png);
     border-bottom: 0;
 }
 

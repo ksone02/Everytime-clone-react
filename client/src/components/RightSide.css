@@ -22,7 +22,7 @@ div.rightside form.search input.text {
     border: 2px solid #d6d6d6;
     color: #292929;
     font-size: 14px;
-    background: transparent url(https://everytime.kr/images/new/aside.search.background.png) no-repeat right center;
+    background: transparent url(../images/aside-search-background.png) no-repeat right center;
     background-size: 40px 40px;
 }
 
@@ -103,20 +103,20 @@ div.card div.board a.article ul.status {
 
 div.card div.board a.article ul.status li.vote.active {
     color: #c62917;
-    background-image: url(https://everytime.kr/images/new/container.articles.vote.png);
+    background-image: url(../images/containe-articles-vote.png);
 }
 
 div.card div.board a.article ul.status li.vote {
-    background-image: url(https://everytime.kr/images/new/container.articles.vote.png);
+    background-image: url(../images/containe-articles-vote.png);
 }
 
 div.card div.board a.article ul.status li.comment.active {
     color: #0ca5af;
-    background-image: url(https://everytime.kr/images/new/container.articles.comment.png);
+    background-image: url(../images/container-articles-comment.png);
 }
 
 div.card div.board a.article ul.status li.comment {
-    background-image: url(https://everytime.kr/images/new/container.articles.comment.png);
+    background-image: url(../images/container-articles-comment.png);
 }
 
 div.card div.board a.article ul.status > li {
@@ -159,4 +159,19 @@ div.card div.board a.list > p {
     text-overflow: ellipsis;
     color: #444444;
     font-size: 14px;
+}
+
+div.card div.board div.list > p {
+    height: 17px;
+    line-height: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #444444;
+    font-size: 14px;
+}
+
+div.card div.board div.list {
+    padding: 10px;
+    border-top: 1px solid #e3e3e3;
 }

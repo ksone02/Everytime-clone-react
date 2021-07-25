@@ -134,12 +134,12 @@
 }
 
 .account a.icon.message {
-    background-image: url(https://everytime.kr/images/nav.account.message.png);
+    background-image: url(../images/nav-account-message-png.png);
     background-size: 16px 11px;
 }
 
 .account a.icon.my {
-    background-image: url(https://everytime.kr/images/nav.account.my.png);
+    background-image: url(../images/nav-account-my.png);
     background-size: 16px 16px;
 }
 
