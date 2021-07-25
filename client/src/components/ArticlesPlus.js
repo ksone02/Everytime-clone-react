@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './ArticlesPlus.css';
 import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
@@ -35,7 +35,7 @@ function ArticlesPlus({match}) {
         
         return dateResult;
     }
-    const detailPost = async() => {
+    const detailPost = useCallback(async() => {
         try {
             const detailPostResponse = await axios.post('http://localhost:3001/postDetail', {number: match.params.userId});
             settitle(detailPostResponse.data[0].title);
@@ -48,7 +48,7 @@ function ArticlesPlus({match}) {
         } catch(e) {
             alert("오류발생 detailpost");
         }
-    }
+    },[match.params.userId]);
     
     const likeBtn = () => {
         if(!isLikePost) {
@@ -65,19 +65,22 @@ function ArticlesPlus({match}) {
     }
 
     const [boardName, setBoardName] = useState("");
-    const checkBoard = async() => {
+    const checkBoard = useCallback(async() => {
         try {
             const checkBoardResponse = await axios.post('http://localhost:3001/checkboard', {boardNumber: boardNum});
             setBoardName(checkBoardResponse.data[0].boardName);
         } catch(e) {
             
         }
-    }
+    }, [boardNum]);
 
     useEffect(() => {
         detailPost();
+    }, [detailPost]); 
+
+    useEffect(() => {
         checkBoard();
-    } ) 
+    }, [checkBoard]);
     return (
         <div className="main">
             <div className="wrap title">

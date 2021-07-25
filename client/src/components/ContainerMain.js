@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Articles from './Articles';
 import './ContainerMain.css';
 import axios from 'axios';
-import { Route, withRouter } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 
 function ContainerMain(props) {
     
@@ -56,14 +56,14 @@ function ContainerMain(props) {
     }
 
     const [writeInfo, setWriteInfo] = useState([[]]);
-    const writeCheck = async() => {
+    const writeCheck = useCallback(async() => {
         try {
             const writeCheckResponse = await axios.post('http://localhost:3001/writeCheck', {board: props.match.params.boardNum});
             setWriteInfo(writeCheckResponse.data);
         } catch(e) {
             alert("오류발생 writecheck");
         }
-    }
+    }, [props.match.params.boardNum]);
 
     const checkDate = (date) => {
         let nowDate = new Date();
@@ -89,25 +89,28 @@ function ContainerMain(props) {
     }
 
     const [boardName, setBoardName] = useState("");
-    const checkBoard = async() => {
+    const checkBoard = useCallback(async() => {
         try {
             const checkBoardResponse = await axios.post('http://localhost:3001/checkboard', {boardNumber: props.match.params.boardNum});
             setBoardName(checkBoardResponse.data[0].boardName);
         } catch(e) {
             
         }
-    }
+    }, [props.match.params.boardNum]);
 
     useEffect(() => {
         writeCheck();
+    }, [writeCheck]);
+
+    useEffect(() => {
         checkBoard();
-    });
+    }, [checkBoard])
 
     return (
         <div className="main">
             <div className="wrap title">
                 <h1>
-                    <a href="/377398">{boardName}</a>
+                    <Link to={`/main/board/${props.match.params.boardNum}`}>{boardName}</Link>
                 </h1>
                 <hr />
             </div>
@@ -155,9 +158,14 @@ function ContainerMain(props) {
                         </form>
                         <div onClick={isWrite} id="writeArticleButton">새 글을 작성해주세요!</div>
                         {
-                            writeInfo.map((v, i) => {
+                            writeInfo.length > 0
+                            ? writeInfo.map((v, i) => {
                                 return <Articles key={i} number={v.number} title={v.title} content={v.content} userNickname={v.isAnony === 1 ? "익명" : v.userNickname} date={checkDate(v.date) + "전"} likeNum={v.likeNum} boardNum={v.board}/>
                             })
+                            : 
+                            <article className="dialog">
+                                아직 글이 하나도 없어요.
+                            </article>
                         }
                     </>
                 } />

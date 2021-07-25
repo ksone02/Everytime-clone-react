@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './AnotherArticles.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function AnotherArticles(props) {
     const [boardName, setBoardName] = useState("");
-    const checkBoard = async() => {
+    const checkBoard = useCallback(async() => {
         try {
             const checkBoardResponse = await axios.post('http://localhost:3001/checkboard', {boardNumber: props.boardNum});
             setBoardName(checkBoardResponse.data[0].boardName);
         } catch(e) {
             
         }
-    }
+    }, [props.boardNum]);
+
     useEffect(() => {
         checkBoard();
-    })
+    }, [checkBoard])
     return (
         <article>
             <Link to={{
-                pathname: `/main/${props.boardNum}/${props.number}`
+                pathname: `/main/board/${props.boardNum}/${props.number}`
             }} className="article">
                 <img src="https://cf-fpi.everytime.kr/0.png" className="picture medium"alt="profile"/>
                 <h3 className="medium">{props.userNickname}</h3>
