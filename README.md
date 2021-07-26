@@ -1,7 +1,7 @@
 # Mjclass
 React,js와 Express, MySQL 활용해 에브리타임 따라만들기<br/><br/>
 https://everytime.kr/ ==> 에브리타임<br/>
-https://ksone02.github.io/MJclass/ ==> Mjclass 메인페이지 프로토타입<br/>
+https://ksone02.github.io/Everytime-clone-react/ ==> Mjclass 메인페이지 프로토타입<br/>
 ***
 # 1. 지원하는 기능
 ## 1.1 회원관리
