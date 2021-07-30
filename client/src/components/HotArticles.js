@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AnotherArticles from './AnotherArticles';
@@ -19,7 +19,7 @@ function HotArticles() {
         
     }
     const [writeInfo, setWriteInfo] = useState([[]]);
-    const detailPost = async() => {
+    const detailPost = useCallback(async() => {
         try {
             const myarticlesResponse = await axios.post('http://localhost:3001/hotarticles');
             if(myarticlesResponse.data.length > 0) {
@@ -28,10 +28,10 @@ function HotArticles() {
         } catch(e) {
             alert("오류발생" + e);
         }
-    }
+    }, []);
     useEffect(() => {
         detailPost();
-    }, []);
+    }, [detailPost]);
     return (
         <div className="main">
             <div className="wrap title">

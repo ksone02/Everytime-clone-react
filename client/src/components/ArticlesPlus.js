@@ -76,7 +76,7 @@ function ArticlesPlus({match}) {
 
     useEffect(() => {
         detailPost();
-    }, [detailPost]); 
+    }, [detailPost, isLikePost]); 
 
     useEffect(() => {
         checkBoard();

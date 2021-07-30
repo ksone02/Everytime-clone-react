@@ -45,7 +45,7 @@ function MyArticles(props) {
             </div>
             <div className="wrap articles">
                 {
-                    writeInfo.length > 0 ?
+                    writeInfo.length > 1 ?
                     writeInfo.map((v, i) => {
                         return <AnotherArticles key={i} number={v.number} title={v.title} content={v.content} userNickname={v.isAnony === 1 ? "익명" : v.userNickname} date={checkDate(v.date)} likeNum={v.likeNum} boardNum={v.board} />
                     }) :

@@ -100,11 +100,11 @@ function ContainerMain(props) {
 
     useEffect(() => {
         writeCheck();
-    }, [writeCheck]);
+    }, [writeCheck, isanon]);
 
     useEffect(() => {
         checkBoard();
-    }, [checkBoard])
+    }, [checkBoard, writeInfo]);
 
     return (
         <div className="main">

@@ -52,6 +52,7 @@ exports.like = (req,res) => {
         if(err) console.log("좋아요 + 1 오류:" +err );
         if(result) {
             console.log("좋아요 + 1");
+            console.log(result);
         }
     });
 }
@@ -74,13 +75,15 @@ exports.famouswrite = (req,res) => {
 }
 
 exports.checkboard = (req, res) => {
-    db.connection.query('SELECT boardName FROM board WHERE boardNumber = ?', [req.body.boardNumber], (err,result) => {
-        if(err) console.log(err);
-        if(result) {
-            res.send(result);
-            console.log(result);
-        }
-    });
+    if(req.body.boardNumber){
+        db.connection.query('SELECT boardName FROM board WHERE boardNumber = ?', [req.body.boardNumber], (err,result) => {
+            if(err) console.log(err);
+            if(result) {
+                res.send(result);
+                console.log(result);
+            }
+        });
+    }
 }
 
 exports.hotarticles = (req, res) => {
