@@ -32,11 +32,11 @@ function Router() {
   });
   return (
     <div>
-      <BrowserRouter basename="process.env.PUBLIC_URL">
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/main">
+          <Route path="/" exact>
             {loginStatus === true ? (
               <IsLogin
                 user_id={sessionId}
