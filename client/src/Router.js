@@ -36,7 +36,7 @@ function Router() {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/main" exact>
+          <Route path="/" exact>
             {loginStatus === true ? (
               <IsLogin
                 user_id={sessionId}
@@ -46,6 +46,13 @@ function Router() {
             ) : (
               <Notlogin />
             )}
+          </Route>
+          <Route path="/islogin">
+            <IsLogin
+              user_id={sessionId}
+              user_name={sessionName}
+              user_nickname={sessionNickname}
+            />
           </Route>
           <Route render={() => <div className="error">에러 페이지</div>} />
         </Switch>
