@@ -36,7 +36,7 @@ function Router() {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/" exact>
+          <Route path="/main" exact>
             {loginStatus === true ? (
               <IsLogin
                 user_id={sessionId}
