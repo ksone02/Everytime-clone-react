@@ -1,24 +1,27 @@
 {
   "files": {
-    "main.css": "/MJclass/static/css/main.b9be5c4a.chunk.css",
-    "main.js": "/MJclass/static/js/main.3270926f.chunk.js",
-    "main.js.map": "/MJclass/static/js/main.3270926f.chunk.js.map",
-    "runtime-main.js": "/MJclass/static/js/runtime-main.200e9ccc.js",
-    "runtime-main.js.map": "/MJclass/static/js/runtime-main.200e9ccc.js.map",
-    "static/js/2.ab62a56c.chunk.js": "/MJclass/static/js/2.ab62a56c.chunk.js",
-    "static/js/2.ab62a56c.chunk.js.map": "/MJclass/static/js/2.ab62a56c.chunk.js.map",
-    "static/js/3.91331334.chunk.js": "/MJclass/static/js/3.91331334.chunk.js",
-    "static/js/3.91331334.chunk.js.map": "/MJclass/static/js/3.91331334.chunk.js.map",
-    "index.html": "/MJclass/index.html",
-    "service-worker.js": "/MJclass/service-worker.js",
-    "service-worker.js.map": "/MJclass/service-worker.js.map",
-    "static/css/main.b9be5c4a.chunk.css.map": "/MJclass/static/css/main.b9be5c4a.chunk.css.map",
-    "static/js/2.ab62a56c.chunk.js.LICENSE.txt": "/MJclass/static/js/2.ab62a56c.chunk.js.LICENSE.txt"
+    "main.css": "/Everytime-clone-react/static/css/main.314770c7.chunk.css",
+    "main.js": "/Everytime-clone-react/static/js/main.9a81f786.chunk.js",
+    "main.js.map": "/Everytime-clone-react/static/js/main.9a81f786.chunk.js.map",
+    "runtime-main.js": "/Everytime-clone-react/static/js/runtime-main.142fac80.js",
+    "runtime-main.js.map": "/Everytime-clone-react/static/js/runtime-main.142fac80.js.map",
+    "static/js/2.9048822f.chunk.js": "/Everytime-clone-react/static/js/2.9048822f.chunk.js",
+    "static/js/2.9048822f.chunk.js.map": "/Everytime-clone-react/static/js/2.9048822f.chunk.js.map",
+    "static/js/3.77fd819c.chunk.js": "/Everytime-clone-react/static/js/3.77fd819c.chunk.js",
+    "static/js/3.77fd819c.chunk.js.map": "/Everytime-clone-react/static/js/3.77fd819c.chunk.js.map",
+    "index.html": "/Everytime-clone-react/index.html",
+    "service-worker.js": "/Everytime-clone-react/service-worker.js",
+    "service-worker.js.map": "/Everytime-clone-react/service-worker.js.map",
+    "static/css/main.314770c7.chunk.css.map": "/Everytime-clone-react/static/css/main.314770c7.chunk.css.map",
+    "static/js/2.9048822f.chunk.js.LICENSE.txt": "/Everytime-clone-react/static/js/2.9048822f.chunk.js.LICENSE.txt",
+    "static/media/appstore.21b7a55a.png": "/Everytime-clone-react/static/media/appstore.21b7a55a.png",
+    "static/media/playstore.555ea426.png": "/Everytime-clone-react/static/media/playstore.555ea426.png",
+    "static/media/Notlogin.css": "/Everytime-clone-react/static/media/screen.85de0f9f.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.200e9ccc.js",
-    "static/js/2.ab62a56c.chunk.js",
-    "static/css/main.b9be5c4a.chunk.css",
-    "static/js/main.3270926f.chunk.js"
+    "static/js/runtime-main.142fac80.js",
+    "static/js/2.9048822f.chunk.js",
+    "static/css/main.314770c7.chunk.css",
+    "static/js/main.9a81f786.chunk.js"
   ]
 }
