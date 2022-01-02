@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Everytime-clone-react/static/css/main.314770c7.chunk.css",
-    "main.js": "/Everytime-clone-react/static/js/main.9a81f786.chunk.js",
-    "main.js.map": "/Everytime-clone-react/static/js/main.9a81f786.chunk.js.map",
+    "main.js": "/Everytime-clone-react/static/js/main.ab5c32c8.chunk.js",
+    "main.js.map": "/Everytime-clone-react/static/js/main.ab5c32c8.chunk.js.map",
     "runtime-main.js": "/Everytime-clone-react/static/js/runtime-main.142fac80.js",
     "runtime-main.js.map": "/Everytime-clone-react/static/js/runtime-main.142fac80.js.map",
     "static/js/2.9048822f.chunk.js": "/Everytime-clone-react/static/js/2.9048822f.chunk.js",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.142fac80.js",
     "static/js/2.9048822f.chunk.js",
     "static/css/main.314770c7.chunk.css",
-    "static/js/main.9a81f786.chunk.js"
+    "static/js/main.ab5c32c8.chunk.js"
   ]
 }
